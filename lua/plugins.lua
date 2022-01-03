@@ -99,8 +99,8 @@ return require("packer").startup({
 
         -- Text editing
         use({
-            -- Creates new text objects, such as `i(`, which will select
-            -- in parentheses
+            -- Creates new text objects, such as `ia`, which will select
+            -- inside an argument in a function call
             {
                 "wellle/targets.vim",
                 keys = {
