@@ -1,0 +1,1 @@
+Gitsigns toggle_signs
