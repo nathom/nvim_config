@@ -38,6 +38,14 @@ local function black()
     }
 end
 
+local function google_java_format()
+    return {
+        exe = "google-java-format",
+        args = { "-" },
+        stdin = true,
+    }
+end
+
 local function isort()
     return { exe = "isort", args = { "-", "--quiet" }, stdin = true }
 end
@@ -61,9 +69,13 @@ local function stylua()
     }
 end
 
--- local function latexindent()
---   return { exe = 'latexindent', args = { '-sl', '-g /dev/stderr', '2>/dev/null' }, stdin = true }
--- end
+local function latexindent()
+    return {
+        exe = "latexindent",
+        -- args = { [[--yaml="defaultIndent=' '"]] },
+        stdin = true,
+    }
+end
 
 -- local function cmake_format()
 --   return { exe = 'cmake-format', args = { vim.fn.expand '%:t' }, stdin = false }
@@ -82,7 +94,8 @@ local formatter_setup = {
         python = { isort, black },
         rust = { rustfmt },
         go = { gofmt },
-        -- tex = { latexindent },
+        java = { google_java_format },
+        tex = { latexindent },
     },
 }
 

@@ -2,35 +2,6 @@ local vi_mode_utils = require("feline.providers.vi_mode")
 local utils = require("config.utils")
 local colors = utils.colors
 
---[[local math_letters_fancy = {
-    [65] = "𝕬",
-    [66] = "𝕭",
-    [67] = "𝕮",
-    [68] = "𝕯",
-    [69] = "𝕰",
-    [70] = "𝕱",
-    [71] = "𝕲",
-    [72] = "𝕳",
-    [73] = "𝕴",
-    [74] = "𝕵",
-    [75] = "𝕶",
-    [76] = "𝕷",
-    [77] = "𝕸",
-    [78] = "𝕹",
-    [79] = "𝕺",
-    [80] = "𝕻",
-    [81] = "𝕼",
-    [82] = "𝕽",
-    [83] = "𝕾",
-    [84] = "𝕿",
-    [85] = "𝖀",
-    [86] = "𝖁",
-    [87] = "𝖂",
-    [88] = "𝖃",
-    [89] = "𝖄",
-    [90] = "𝖅",
-}]]
-
 local math_letters = {
     [65] = "𝐀",
     [66] = "𝐁",
@@ -72,6 +43,33 @@ local function shortened_filename()
     -- Shorten subdir names to a single character
     local shortened = relative:gsub([[([^/])[^/]+/]], [[%1/]])
     return " " .. shortened .. " "
+end
+
+local index = require("diffstatus").index
+local function git_diff_added()
+    -- assumes using rooter.vim
+    local fn = vim.fn.expand("%")
+    local status = index[fn]
+    if status and status[1] > 0 then
+        return tostring(status[1]) .. "  "
+    end
+
+    return ""
+end
+local function git_diff_changed()
+    -- if g.git_diff_changed > 0 then
+    --     return tostring(g.git_diff_changed) .. " 柳"
+    -- end
+    return ""
+end
+local function git_diff_removed()
+    local fn = vim.fn.expand("%")
+    local status = index[fn]
+    if status and status[2] > 0 then
+        return tostring(status[2]) .. "  "
+    end
+
+    return ""
 end
 
 local mode_highlight = {
@@ -125,8 +123,8 @@ components.active[1] = {
 
     {
         provider = function()
-            branch = vim.b.gitsigns_head
-            if branch then
+            branch = vim.fn["gitbranch#name"]()
+            if #branch ~= 0 then
                 return "  " .. branch .. " "
             else
                 return ""
@@ -165,21 +163,21 @@ components.active[2] = {
         },
     },
     {
-        provider = "git_diff_added",
+        provider = git_diff_added,
         hl = {
             fg = "green",
             bg = "black",
         },
     },
     {
-        provider = "git_diff_changed",
+        provider = git_diff_changed,
         hl = {
             fg = "yellow",
             bg = "black",
         },
     },
     {
-        provider = "git_diff_removed",
+        provider = git_diff_removed,
         hl = {
             fg = "red",
             bg = "black",
@@ -197,6 +195,7 @@ components.active[2] = {
             style = "bold",
         },
     },
+    {},
 }
 
 local feline = require("feline")
@@ -204,3 +203,33 @@ feline.setup({
     components = components,
 })
 feline.use_theme(colors)
+--[[
+
+local math_letters_fancy = {
+    [65] = "𝕬",
+    [66] = "𝕭",
+    [67] = "𝕮",
+    [68] = "𝕯",
+    [69] = "𝕰",
+    [70] = "𝕱",
+    [71] = "𝕲",
+    [72] = "𝕳",
+    [73] = "𝕴",
+    [74] = "𝕵",
+    [75] = "𝕶",
+    [76] = "𝕷",
+    [77] = "𝕸",
+    [78] = "𝕹",
+    [79] = "𝕺",
+    [80] = "𝕻",
+    [81] = "𝕼",
+    [82] = "𝕽",
+    [83] = "𝕾",
+    [84] = "𝕿",
+    [85] = "𝖀",
+    [86] = "𝖁",
+    [87] = "𝖂",
+    [88] = "𝖃",
+    [89] = "𝖄",
+    [90] = "𝖅",
+}]]

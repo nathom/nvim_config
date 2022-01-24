@@ -1,4 +1,2 @@
-local opt = require("config.utils").opt
-vim.cmd([[setlocal foldmethod=indent]])
--- opt("foldmethod", "indent", { vim.bo })
--- opt("foldnestmax", 2)
+vim.g.fastfold_force = 1
+vim.g.fastfold_minlines = 0

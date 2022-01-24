@@ -5,6 +5,7 @@ local silent = { silent = true }
 
 in_repo = nil
 function run_telescope_command()
+    print("running telescope command")
     if in_repo == nil then
         in_repo = is_in_repo()
     end

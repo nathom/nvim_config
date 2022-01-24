@@ -21,11 +21,21 @@ parser_configs.org = {
 }
 
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "python", "rust", "toml", "org" },
+    -- ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go" },
     highlight = {
         enable = true,
-        disable = { "org" },
+        disable = { "org", "markdown" },
         additional_vim_regex_highlighting = { "org" },
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+            },
+        },
     },
 })
 

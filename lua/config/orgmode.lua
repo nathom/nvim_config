@@ -1,8 +1,11 @@
 -- Remove the ^-Space mapping from System Prefences->Shortcuts->Input Sources!
+--
+local HOME = require("config.utils").HOME
 
 require("orgmode").setup({
     org_agenda_files = {
-        "/Users/nathan/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/*",
+        HOME
+            .. "/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/*",
     },
     notifications = {
         enabled = true,

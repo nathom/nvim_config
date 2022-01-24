@@ -9,6 +9,8 @@ local extensions = {
     "h",
     "hpp",
     "go",
+    "java",
+    "tex",
 }
 
 local extension_str = "*." .. table.concat(extensions, ",*.")

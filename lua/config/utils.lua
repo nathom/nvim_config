@@ -4,6 +4,8 @@ local map_key = vim.api.nvim_set_keymap
 
 local M = {}
 
+M.HOME = os.getenv("HOME")
+
 function M.opt(o, v, scopes)
     scopes = scopes or { o_s }
     for _, s in ipairs(scopes) do
@@ -24,7 +26,8 @@ end
 
 -- From gruvbox8 colorscheme
 M.colors = {
-    black = "#282828",
+    -- black = "#282828",
+    black = "Background",
     red = "#cc241d",
     green = "#98971a",
     yellow = "#d79921",

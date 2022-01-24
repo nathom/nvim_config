@@ -11,7 +11,13 @@ lspconfig.clangd.setup({
 lspconfig.rust_analyzer.setup({})
 
 lspconfig.gopls.setup({})
-
+-- lspconfig.java_language_server.setup({
+--     cmd = {
+--         "bash",
+--         utils.HOME .. "java-langugage-server/dist/lang_server_mac.sh",
+--     },
+-- })
+lspconfig.jdtls.setup({ cmd = { "jdtls" } })
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
     lsp.diagnostic.on_publish_diagnostics,
     {

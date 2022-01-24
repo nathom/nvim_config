@@ -15,6 +15,7 @@ return require("packer").startup({
         use({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
+            requires = { "nvim-treesitter/nvim-treesitter-textobjects" },
             config = [[require("config.treesitter")]],
         })
 
@@ -52,6 +53,7 @@ return require("packer").startup({
         use({
             "famiu/feline.nvim",
             config = [[require('config.feline')]],
+            requires = { "itchyny/vim-gitbranch" },
         })
 
         -- Gutter signs that show changes to the current file
@@ -60,6 +62,7 @@ return require("packer").startup({
             "lewis6991/gitsigns.nvim",
             requires = { "nvim-lua/plenary.nvim" },
             config = [[require('config.gitsigns')]],
+            disable = true,
         })
 
         -- This section encompasses everything LSP related
@@ -72,7 +75,7 @@ return require("packer").startup({
                 -- An annoying thing with this setup is that
                 -- you need to add filetypes to this array when you
                 -- add a new LS.
-                ft = { "c", "cpp", "rust", "go" },
+                ft = { "c", "cpp", "rust", "go", "java" },
             },
             -- Instead of cluttering up the screen with error messages,
             -- show them in a pretty window when requested
@@ -85,7 +88,11 @@ return require("packer").startup({
 
         -- Clears clutter from the screen for a more peaceful Neovim
         -- Less glitchy than Goyo.vim, especially with the bufferline
-        use({ "Pocco81/TrueZen.nvim", config = [[require('config.truezen')]] })
+        use({
+            "Pocco81/TrueZen.nvim",
+            config = [[require('config.truezen')]],
+            cmd = "TZAtaraxis",
+        })
 
         -- Automatically set tab settings based on the contents of the file
         use("tpope/vim-sleuth")
@@ -143,15 +150,8 @@ return require("packer").startup({
 
         -- Org-mode for neovim
         use({
-            {
-                "kristijanhusak/orgmode.nvim",
-                config = [[require("config.orgmode")]],
-            },
-            -- Pretty bullet points for org files
-            {
-                "akinsho/org-bullets.nvim",
-                config = [[require('config.org_bullets')]],
-            },
+            "kristijanhusak/orgmode.nvim",
+            config = [[require("config.orgmode")]],
         })
 
         -- Markdown utilities
@@ -159,14 +159,15 @@ return require("packer").startup({
             -- The ultimate markdown plugin
             {
                 "plasticboy/vim-markdown",
-                -- setup = [[require('config.vim_markdown')]],
+                setup = [[require('config.vim_markdown')]],
+                requires = { "godlygeek/tabular" },
                 ft = "markdown",
-            },
-            -- Easier markdown table formatting
-            { "dhruvasagar/vim-table-mode", cmd = "TableModeToggle" },
-            -- Automatically wrap lines when writing prose
-            { "preservim/vim-pencil", ft = { "markdown", "org" } }
+            }
         )
+        -- Easier markdown table formatting
+        use({ "dhruvasagar/vim-table-mode", cmd = "TableModeToggle" })
+        -- Automatically wrap lines when writing prose
+        use({ "preservim/vim-pencil", ft = { "markdown", "org", "tex" } })
 
         -- Format files on write
         use({
@@ -253,25 +254,24 @@ return require("packer").startup({
         -- Paste images into markdown and org files from clipboard
         use("~/imagepaste.nvim")
 
-        -- Smooth scrolling
-        use({
-            "psliwka/vim-smoothie",
-            keys = {
-                { "n", "<C-f>" },
-                { "n", "<C-b>" },
-                { "n", "<C-d>" },
-                { "n", "<C-u>" },
-            },
-            disable = true,
-        })
-
-        -- Can remove when 0.6 is released
         -- Speeds up startup
         use("lewis6991/impatient.nvim")
+
+        -- The Ultimate LaTeX plugin
+        use({ "lervag/vimtex", config = [[require('config.vimtex')]] })
+
+        -- Only compute folds on write
+        use({
+            "Konfekt/FastFold",
+            setup = [[require("config.fastfold_setup")]],
+            -- config = [[require("config.fastfold")]],
+            -- keys = { { "n", "z" } },
+        })
+        use("~/diffstatus.nvim")
         --- *** END EXPERIMENTAL *** ---
     end,
     config = {
-        -- Move to lua dir so impatient.nvim can cache it
+        -- Move packer_compiled lua dir so impatient.nvim can cache it
         compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
     },
 })
