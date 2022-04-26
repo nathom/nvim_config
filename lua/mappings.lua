@@ -20,11 +20,11 @@ map("n", "[b", "<cmd>bp<cr>")
 map("n", "]b", "<cmd>bn<cr>")
 
 -- Complete curly brackets using K&R style
-map("i", "[c", "<Esc>A {<cr>}<Esc>O")
+map("i", "<C-c>", "<Esc>A {<cr>}<Esc>O")
 
--- Force write (,w)
+-- Force write `,w`
 map("n", "<localleader>w", "<cmd>w!<cr>", silent)
--- Close buffer (,q)
+-- Close buffer `,q`
 map("n", "<localleader>q", "<cmd>Sayonara<cr>")
 
 -- System clipboard copy/paste (macOS)
@@ -36,12 +36,7 @@ map({ "n", "v" }, "<leader>p", [["*p]], silent)
 map("n", "<leader>t", "<cmd>TroubleToggle<cr>", silent)
 
 -- Toggle folds
-map(
-    "n",
-    "<leader>f",
-    [[ <cmd>if &foldlevel == 0 | set foldlevel=99 | else | set foldlevel=0 | endif<cr> ]],
-    silent
-)
+map("n", "<leader>f", [[ <cmd>if &foldlevel == 0 | set foldlevel=99 | else | set foldlevel=0 | endif<cr> ]], silent)
 
 -- Move entire lines up and down
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -49,20 +44,16 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Open main org file
 map(
-    "n",
-    "<leader>of",
-    "<cmd>e "
-        .. utils.HOME
-        .. "/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents"
-        .. "/org/inbox.org<cr>"
+	"n",
+	"<leader>of",
+	"<cmd>e "
+		.. utils.HOME
+		.. "/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents"
+		.. "/org/inbox.org<cr>"
 )
 
 -- Open file using system application
-map(
-    "n",
-    "<leader>op",
-    [[<cmd>call system("open '" . expand('%:p') . "'")<cr>]]
-)
+map("n", "<leader>op", [[<cmd>call system("open '" . expand('%:p') . "'")<cr>]])
 
 -- Focus mode
 map("n", "<leader>z", [[<cmd>TZAtaraxis<cr>]])
@@ -70,15 +61,35 @@ map("n", "<leader>z", [[<cmd>TZAtaraxis<cr>]])
 local replace_termcodes = vim.api.nvim_replace_termcodes
 local TAB = replace_termcodes("<Tab>", true, false, true)
 local CTRL_N = replace_termcodes("<C-N>", true, false, true)
+local ESC = replace_termcodes("<Esc>", true, false, true)
+function ft_tab_action(line, col)
+	local fn = vim.api.nvim_buf_get_name(0)
+	local ext = fn:match(".*%.(%w+)")
+	if ext == "md" then
+		local _, i = line:find("^%s*-")
+		if i == nil then
+			return
+		end
+		if col - i <= 2 then
+			return ESC .. ">>A"
+		end
+	end
+end
 function tabcomplete()
-    -- If the line is empty or the cursor is at the start of the line
-    -- send TAB
-    -- Otherwise, use C-N autocomplete
-    if vim.fn.col(".") == 1 or vim.fn.getline("."):match("^%s*$") then
-        vim.api.nvim_feedkeys(TAB, "n", true)
-    else
-        vim.api.nvim_feedkeys(CTRL_N, "n", true)
-    end
+	-- If the line is empty or the cursor is at the start of the line
+	-- send TAB
+	-- Otherwise, use C-N autocomplete
+	local line = vim.fn.getline(".")
+	local col = vim.fn.col(".")
+	local keys = ft_tab_action(line, col)
+	if keys ~= nil then
+		vim.api.nvim_feedkeys(keys, "n", true)
+		return
+	elseif col == 1 or line:match("^%s*$") then
+		vim.api.nvim_feedkeys(TAB, "n", true)
+	else
+		vim.api.nvim_feedkeys(CTRL_N, "n", true)
+	end
 end
 
 map("i", "<tab>", "<cmd>lua tabcomplete()<cr>")

@@ -31,24 +31,23 @@ local math_letters = {
     [90] = "𝐙",
 }
 
+local getcwd = vim.fn.getcwd
 local function shortened_filename()
     -- return "/some/file"
     -- .config/nvim/init.lua -> .c/n/init.lua
 
     -- Get relative path
-    local relative = vim.api.nvim_buf_get_name(0):gsub(
-        vim.fn.getcwd() .. "/",
-        ""
-    )
+    local relative = vim.api.nvim_buf_get_name(0):gsub(getcwd() .. "/", "")
     -- Shorten subdir names to a single character
     local shortened = relative:gsub([[([^/])[^/]+/]], [[%1/]])
     return " " .. shortened .. " "
 end
 
 local index = require("diffstatus").index
+local expand = vim.fn.expand
 local function git_diff_added()
     -- assumes using rooter.vim
-    local fn = vim.fn.expand("%")
+    local fn = expand("%")
     local status = index[fn]
     if status and status[1] > 0 then
         return tostring(status[1]) .. "  "
@@ -56,14 +55,8 @@ local function git_diff_added()
 
     return ""
 end
-local function git_diff_changed()
-    -- if g.git_diff_changed > 0 then
-    --     return tostring(g.git_diff_changed) .. " 柳"
-    -- end
-    return ""
-end
 local function git_diff_removed()
-    local fn = vim.fn.expand("%")
+    local fn = expand("%")
     local status = index[fn]
     if status and status[2] > 0 then
         return tostring(status[2]) .. "  "
@@ -104,17 +97,17 @@ components.inactive[1] = {
     },
 }
 
+local vim_mode = require("feline.providers.vi_mode").get_vim_mode
+local git_branch = vim.fn["gitbranch#name"]
 components.active[1] = {
     {
         provider = function()
-            return " "
-                .. (math_letters[vi_mode_utils.get_vim_mode():byte(1)] or " ")
-                .. " "
+            return " " .. (math_letters[vim_mode():byte(1)] or " ") .. " "
         end,
         hl = function()
             return {
                 name = vi_mode_utils.get_mode_highlight_name(),
-                bg = mode_highlight[require("feline.providers.vi_mode").get_vim_mode()],
+                bg = mode_highlight[vim_mode()],
                 fg = colors.black,
                 style = "bold",
             }
@@ -123,7 +116,7 @@ components.active[1] = {
 
     {
         provider = function()
-            branch = vim.fn["gitbranch#name"]()
+            branch = git_branch()
             if #branch ~= 0 then
                 return "  " .. branch .. " "
             else
@@ -140,14 +133,16 @@ components.active[1] = {
     },
 }
 
+local display_wc = { md = true, tex = true }
+local nvim_buf_get_lines = vim.api.nvim_buf_get_lines
 components.active[2] = {
     {
         provider = function()
-            if utils.bufext() ~= "md" then
+            if not display_wc[utils.bufext()] then
                 return ""
             end
 
-            local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+            local lines = nvim_buf_get_lines(0, 0, -1, false)
             local words = 0
 
             for _, line in ipairs(lines) do
@@ -166,13 +161,6 @@ components.active[2] = {
         provider = git_diff_added,
         hl = {
             fg = "green",
-            bg = "black",
-        },
-    },
-    {
-        provider = git_diff_changed,
-        hl = {
-            fg = "yellow",
             bg = "black",
         },
     },

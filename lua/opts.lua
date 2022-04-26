@@ -6,22 +6,22 @@ local opt = utils.opt
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
-    "gzip",
-    "man",
-    "matchit",
-    "matchparen",
-    "shada_plugin",
-    "tarPlugin",
-    "tar",
-    "zipPlugin",
-    "zip",
-    "netrwPlugin",
-    "2html_plugin",
-    "remote_plugins",
+	"gzip",
+	"man",
+	"matchit",
+	"matchparen",
+	"shada_plugin",
+	"tarPlugin",
+	"tar",
+	"zipPlugin",
+	"zip",
+	"netrwPlugin",
+	"2html_plugin",
+	"remote_plugins",
 }
 
 for _, plugin in ipairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
+	g["loaded_" .. plugin] = 1
 end
 
 -- Skip some remote provider loading
@@ -31,6 +31,11 @@ g.python3_host_prog = utils.HOME .. "/.pyenv/shims/python"
 g.node_host_prog = "/usr/bin/neovim-node-host"
 
 g.netrw_browsex_viewer = "open"
+
+-- For testing out the new filetype.lua
+-- Still slower than filetype.nvim, probably because it doesn't lazy load
+-- g.do_filetype_lua = 1
+-- g.did_load_filetypes = 0
 
 -- Custom options
 -- opt(x, y) is equivalent to :set x=y
