@@ -29,6 +29,7 @@ Welcome to my neovim config!
 -- Automatically install packer.nvim
 
 local fn = vim.fn
+local cmd = vim.cmd
 local start = os.clock()
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -41,7 +42,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
-	vim.cmd("packadd packer.nvim")
+	cmd("packadd packer.nvim")
 end
 
 -- Improve startup time
@@ -62,9 +63,8 @@ require("opts")
 -- All of my key mappings
 require("mappings")
 
+-- All of my autocommands
 require("autocommands")
-
-local cmd = vim.cmd
 
 -- The greatest colorscheme!
 cmd("colorscheme gruvbox8")

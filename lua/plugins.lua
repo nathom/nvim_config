@@ -271,13 +271,13 @@ return require("packer").startup({
 			-- keys = { { "n", "z" } },
 		})
 		use("~/diffstatus.nvim")
-		use({
-			"AckslD/nvim-neoclip.lua",
-			requires = {
-				{ "tami5/sqlite.lua", module = "sqlite" },
-			},
-			config = [[require('config.neoclip')]],
-		})
+		-- use({
+		-- 	"AckslD/nvim-neoclip.lua",
+		-- 	requires = {
+		-- 		{ "tami5/sqlite.lua", module = "sqlite" },
+		-- 	},
+		-- 	config = [[require('config.neoclip')]],
+		-- })
 		--- *** END EXPERIMENTAL *** ---
 	end,
 	config = {
