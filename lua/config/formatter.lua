@@ -20,11 +20,12 @@ local function prettier()
 end
 
 function clangformat()
+	local fn = vim.api.nvim_buf_get_name(0):gsub(".*/", "")
 	return {
 		exe = "clang-format",
-		args = { "--assume-filename", vim.api.nvim_buf_get_name(0) },
+		args = { "--assume-filename", fn },
 		stdin = true,
-		cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
+		cwd = vim.fn.expand("%:p:h"), -- Run clang-format in parent directory of file
 	}
 end
 
@@ -97,7 +98,7 @@ local formatter_setup = {
 		python = { isort, black },
 		rust = { rustfmt },
 		go = { gofmt },
-		java = { google_java_format },
+		java = { clangformat },
 		tex = { latexindent },
 		haskell = { ormolu },
 	},

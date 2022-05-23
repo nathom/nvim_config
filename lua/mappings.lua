@@ -75,6 +75,7 @@ function ft_tab_action(line, col)
 		end
 	end
 end
+
 function tabcomplete()
 	-- If the line is empty or the cursor is at the start of the line
 	-- send TAB
