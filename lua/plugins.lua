@@ -55,6 +55,7 @@ return require("packer").startup({
 			"famiu/feline.nvim",
 			config = [[require('config.feline')]],
 			requires = { "itchyny/vim-gitbranch" },
+			disable = false,
 		})
 
 		-- Gutter signs that show changes to the current file

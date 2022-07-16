@@ -64,8 +64,7 @@ local CTRL_N = replace_termcodes("<C-N>", true, false, true)
 local ESC = replace_termcodes("<Esc>", true, false, true)
 
 function ft_tab_action(line, col)
-	-- Makes it so that pressing tab on a bullet point in a .md file
-	-- indents the entire bullet point
+	-- Pressing tab on a line with an empty bullet point indents the line
 	local fn = vim.api.nvim_buf_get_name(0)
 	local ext = fn:match(".*%.(%w+)")
 	if ext == "md" then
