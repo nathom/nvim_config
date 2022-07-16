@@ -1,5 +1,3 @@
-local map = require("config.utils").map
-
 local function ormolu()
 	return {
 		exe = "ormolu",
