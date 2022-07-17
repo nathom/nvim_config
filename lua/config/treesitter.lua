@@ -20,12 +20,14 @@ require("nvim-treesitter.configs").compilers = { "gcc-11" }
 -- 	filetype = "org",
 -- }
 
-require('orgmode').setup_ts_grammar()
+require("orgmode").setup_ts_grammar()
 require("nvim-treesitter.configs").setup({
 	-- ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go" },
 	highlight = {
 		enable = true,
-		disable = { "markdown", "org" },
+		disable = { --[[ "markdown", ]]
+			"org",
+		},
 		additional_vim_regex_highlighting = { "org" },
 	},
 	textobjects = {

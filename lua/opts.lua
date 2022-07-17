@@ -62,6 +62,11 @@ opt("encoding", "UTF-8")
 opt("hidden", true)
 opt("cursorline", true)
 
+-- Global statusline at the bottom
+-- Much cleaner with splits
+-- Needs nvim 0.7
+opt("laststatus", 3)
+
 -- No sounds please
 opt("errorbells", false)
 opt("visualbell", false)
@@ -101,12 +106,12 @@ vim.cmd([[set shada="NONE"]])
 
 -- Fast, and works well enough with most file types
 -- opt("foldmethod", "indent")
-opt("foldmethod", "expr")
-opt("foldexpr", "nvim_treesitter#foldexpr()")
+-- opt("foldmethod", "expr")
+-- opt("foldexpr", "nvim_treesitter#foldexpr()")
 -- Makes folding less annoying
-opt("foldnestmax", 2)
+-- opt("foldnestmax", 2)
 -- Open folds by default
-opt("foldlevel", 99)
+-- opt("foldlevel", 99)
 
 opt("completeopt", "menuone,noselect")
 opt("scrolloff", 2)

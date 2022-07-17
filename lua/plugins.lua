@@ -6,7 +6,8 @@ return require("packer").startup({
 		use("wbthomason/packer.nvim")
 
 		-- A faster port of the legendary gruvbox colorscheme
-		use("lifepillar/vim-gruvbox8")
+		-- use("lifepillar/vim-gruvbox8")
+		use({ "ellisonleao/gruvbox.nvim" })
 
 		-- Treesitter highlights
 		-- Much more comprehensive and accurate than regex highlighting
@@ -158,15 +159,16 @@ return require("packer").startup({
 		})
 
 		-- Markdown utilities
-		use(
-			-- The ultimate markdown plugin
-			{
-				"plasticboy/vim-markdown",
-				setup = [[require('config.vim_markdown')]],
-				requires = { "godlygeek/tabular" },
-				ft = "markdown",
-			}
-		)
+		-- use(
+		-- 	-- The ultimate markdown plugin
+		-- 	{
+		-- 		"plasticboy/vim-markdown",
+		-- 		setup = [[require('config.vim_markdown')]],
+		-- 		requires = { "godlygeek/tabular" },
+		-- 		ft = "markdown",
+		-- 	}
+		-- )
+
 		-- Easier markdown table formatting
 		use({ "dhruvasagar/vim-table-mode", cmd = "TableModeToggle" })
 		-- Automatically wrap lines when writing prose
@@ -265,12 +267,15 @@ return require("packer").startup({
 		use({ "lervag/vimtex", config = [[require('config.vimtex')]] })
 
 		-- Only compute folds on write
-		use({
-			"Konfekt/FastFold",
-			setup = [[require("config.fastfold_setup")]],
-			-- config = [[require("config.fastfold")]],
-			-- keys = { { "n", "z" } },
-		})
+		-- use({
+		-- 	"Konfekt/FastFold",
+		-- 	setup = [[require("config.fastfold_setup")]],
+		-- 	-- config = [[require("config.fastfold")]],
+		-- 	-- keys = { { "n", "z" } },
+		-- })
+
+		use({ "kevinhwang91/nvim-ufo", config = [[require('config.ufo')]], requires = "kevinhwang91/promise-async" })
+
 		use("~/diffstatus.nvim")
 		-- use({
 		-- 	"AckslD/nvim-neoclip.lua",

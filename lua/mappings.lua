@@ -64,6 +64,9 @@ local CTRL_N = replace_termcodes("<C-N>", true, false, true)
 local ESC = replace_termcodes("<Esc>", true, false, true)
 
 function ft_tab_action(line, col)
+	-- Filetype specific actions for <Tab>
+
+	-- Markdown:
 	-- Pressing tab on a line with an empty bullet point indents the line
 	local fn = vim.api.nvim_buf_get_name(0)
 	local ext = fn:match(".*%.(%w+)")
@@ -96,5 +99,15 @@ function tabcomplete()
 end
 
 map("i", "<tab>", "<cmd>lua tabcomplete()<cr>")
+
+function smart_dd()
+	if vim.api.nvim_get_current_line():match("^%s*$") then
+		return '"_dd'
+	else
+		return "dd"
+	end
+end
+
+map("n", "dd", smart_dd, { noremap = true, expr = true })
 
 map({ "x", "v" }, "<leader>a", ":Tabularize /")

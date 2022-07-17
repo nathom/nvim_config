@@ -67,7 +67,7 @@ require("mappings")
 require("autocommands")
 
 -- The greatest colorscheme!
-cmd("colorscheme gruvbox8")
+cmd("colorscheme gruvbox")
 
 -- Fix commonly mistyped words
 cmd("iabbrev teh the")
