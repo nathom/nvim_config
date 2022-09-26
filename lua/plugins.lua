@@ -124,7 +124,14 @@ return require("packer").startup({
 			-- letters delimiters
 			{
 				"chaoren/vim-wordmotion",
-				keys = { "w", "b" },
+				keys = {
+					{ "n", "w" },
+					{ "n", "b" },
+					{ "n", "W" },
+					{ "n", "B" },
+					{ "o", "w" },
+					{ "o", "W" },
+				},
 			},
 			-- Easily surround text in characters
 			{
@@ -274,7 +281,11 @@ return require("packer").startup({
 		-- 	-- keys = { { "n", "z" } },
 		-- })
 
-		use({ "kevinhwang91/nvim-ufo", config = [[require('config.ufo')]], requires = "kevinhwang91/promise-async" })
+		use({
+			"kevinhwang91/nvim-ufo",
+			config = [[require('config.ufo')]],
+			requires = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
+		})
 
 		use("~/diffstatus.nvim")
 		-- use({

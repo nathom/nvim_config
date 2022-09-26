@@ -36,7 +36,8 @@ map({ "n", "v" }, "<leader>p", [["*p]], silent)
 map("n", "<leader>t", "<cmd>TroubleToggle<cr>", silent)
 
 -- Toggle folds
-map("n", "<leader>f", [[ <cmd>if &foldlevel == 0 | set foldlevel=99 | else | set foldlevel=0 | endif<cr> ]], silent)
+-- REMOVED, replaced by discovery of zR and zM
+-- map("n", "<leader>f", [[ <cmd>if &foldlevel == 0 | set foldlevel=99 | else | set foldlevel=0 | endif<cr> ]], silent)
 
 -- Move entire lines up and down
 map("v", "J", ":m '>+1<CR>gv=gv")

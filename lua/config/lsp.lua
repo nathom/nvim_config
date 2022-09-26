@@ -30,8 +30,15 @@ local function on_attach(client, bufnr)
 	lsp_map("<leader>f", "formatting")
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
 for _, s in ipairs(servers) do
 	lspconfig[s].setup({
+		capabilities = capabilities,
 		on_attach = on_attach,
 	})
 end

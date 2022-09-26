@@ -35,10 +35,10 @@ local function handler(virtText, lnum, endLnum, width, truncate)
 end
 
 require("ufo").setup({
-	provider_selector = function(bufnr, filetype, buftype)
-		-- Use treesitter for folding info
-		return { "treesitter", "indent" }
-	end,
+	-- provider_selector = function(bufnr, filetype, buftype)
+	-- 	-- Use treesitter for folding info
+	-- 	return { "treesitter", "indent" }
+	-- end,
 
 	fold_virt_text_handler = handler,
 })
