@@ -7,6 +7,8 @@ npairs.add_rule(Rule("\\{", "\\}", "tex"))
 npairs.add_rule(Rule("\\left(", "\\right)", { "tex", "markdown" }))
 npairs.add_rule(Rule("\\left[", "\\right]", { "tex", "markdown" }))
 npairs.add_rule(Rule("\\left{", "\\right}", { "tex", "markdown" }))
+npairs.add_rule(Rule("\\lfloor", "\\rfloor", { "tex", "markdown" }))
+npairs.add_rule(Rule("\\lceil", "\\rceil", { "tex", "markdown" }))
 
 -- npairs.add_rule(
 --     Rule("\\begin%{%w+%}$", "", { "plaintex", "markdown" })

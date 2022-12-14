@@ -1,12 +1,22 @@
 local utils = require("config.utils")
 local map = utils.map
 local g = vim.g
+local cmd = vim.cmd
 
 local silent = { silent = true }
 
 -- Leader/local leader
 g.mapleader = [[ ]]
 g.maplocalleader = [[,]]
+
+-- Fix commonly mistyped words
+cmd("iabbrev teh the")
+cmd("iabbrev hte the")
+cmd("iabbrev fo of")
+cmd("iabbrev ot to")
+
+-- Force quit everything quickly
+cmd("command! Q qa!")
 
 -- From tpope/unimpaired.vim, not interested in the rest of
 -- that plugin

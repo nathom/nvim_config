@@ -32,18 +32,18 @@ local fn = vim.fn
 local cmd = vim.cmd
 local start = os.clock()
 
--- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
--- if fn.empty(fn.glob(install_path)) > 0 then
--- 	fn.system({
--- 		"git",
--- 		"clone",
--- 		"--depth",
--- 		"1",
--- 		"https://github.com/wbthomason/packer.nvim",
--- 		install_path,
--- 	})
--- 	cmd("packadd packer.nvim")
--- end
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	cmd("packadd packer.nvim")
+end
 
 -- Improve startup time
 require("impatient")
@@ -68,15 +68,6 @@ require("autocommands")
 
 -- The greatest colorscheme!
 cmd("colorscheme gruvbox")
-
--- Fix commonly mistyped words
-cmd("iabbrev teh the")
-cmd("iabbrev hte the")
-cmd("iabbrev fo of")
-cmd("iabbrev ot to")
-
--- Force quit everything quickly
-cmd("command! Q qa!")
 
 -- require("autocommands")
 

@@ -43,6 +43,9 @@ opt("termguicolors", true)
 opt("background", "dark")
 opt("showcmd", false)
 
+-- Dont show "-- INSERT --" etc in command bar since it is on the statusline
+opt("showmode", false)
+
 -- Nice for jumping around
 opt("number", true)
 opt("relativenumber", true)

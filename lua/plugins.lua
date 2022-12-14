@@ -176,6 +176,8 @@ return require("packer").startup({
 		-- 	}
 		-- )
 
+		-- Align characters <leader>a in V mode
+		use("godlygeek/tabular")
 		-- Easier markdown table formatting
 		use({ "dhruvasagar/vim-table-mode", cmd = "TableModeToggle" })
 		-- Automatically wrap lines when writing prose
