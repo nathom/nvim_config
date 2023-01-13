@@ -289,7 +289,12 @@ return require("packer").startup({
 			requires = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
 		})
 
+		use({ "otavioschwanck/cool-substitute.nvim", config = [[require('config.cool')]] })
+
 		use("~/diffstatus.nvim")
+
+		use("stevearc/vim-arduino")
+
 		-- use({
 		-- 	"AckslD/nvim-neoclip.lua",
 		-- 	requires = {

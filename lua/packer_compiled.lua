@@ -102,6 +102,12 @@ _G.packer_plugins = {
     path = "/Users/nathan/.local/share/nvim/site/pack/packer/opt/buftabline.nvim",
     url = "https://github.com/jose-elias-alvarez/buftabline.nvim"
   },
+  ["cool-substitute.nvim"] = {
+    config = { "require('config.cool')" },
+    loaded = true,
+    path = "/Users/nathan/.local/share/nvim/site/pack/packer/start/cool-substitute.nvim",
+    url = "https://github.com/otavioschwanck/cool-substitute.nvim"
+  },
   ["diffstatus.nvim"] = {
     loaded = true,
     path = "/Users/nathan/.local/share/nvim/site/pack/packer/start/diffstatus.nvim",
@@ -173,6 +179,12 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/nathan/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-retrail"] = {
+    config = { "require('config.retrail')" },
+    loaded = true,
+    path = "/Users/nathan/.local/share/nvim/site/pack/packer/start/nvim-retrail",
+    url = "https://github.com/zakharykaplan/nvim-retrail"
   },
   ["nvim-treesitter"] = {
     config = { 'require("config.treesitter")' },
@@ -271,6 +283,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/nathan/.local/share/nvim/site/pack/packer/opt/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
+  },
+  ["vim-arduino"] = {
+    loaded = true,
+    path = "/Users/nathan/.local/share/nvim/site/pack/packer/start/vim-arduino",
+    url = "https://github.com/stevearc/vim-arduino"
   },
   ["vim-cool"] = {
     keys = { { "n", "/" }, { "n", "?" }, { "n", "*" }, { "n", "#" } },
@@ -393,14 +410,22 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Setup for: formatter.nvim
-time([[Setup for formatter.nvim]], true)
-require('config.formatter_setup')
-time([[Setup for formatter.nvim]], false)
 -- Setup for: telescope.nvim
 time([[Setup for telescope.nvim]], true)
 require('config.telescope_setup')
 time([[Setup for telescope.nvim]], false)
+-- Setup for: formatter.nvim
+time([[Setup for formatter.nvim]], true)
+require('config.formatter_setup')
+time([[Setup for formatter.nvim]], false)
+-- Config for: cool-substitute.nvim
+time([[Config for cool-substitute.nvim]], true)
+require('config.cool')
+time([[Config for cool-substitute.nvim]], false)
+-- Config for: nvim-retrail
+time([[Config for nvim-retrail]], true)
+require('config.retrail')
+time([[Config for nvim-retrail]], false)
 -- Config for: vimtex
 time([[Config for vimtex]], true)
 require('config.vimtex')
@@ -409,10 +434,14 @@ time([[Config for vimtex]], false)
 time([[Config for vim-rooter]], true)
 require("config.rooter")
 time([[Config for vim-rooter]], false)
--- Config for: orgmode.nvim
-time([[Config for orgmode.nvim]], true)
-require("config.orgmode")
-time([[Config for orgmode.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("config.treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require('config.filetype')
+time([[Config for filetype.nvim]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 require('config.feline')
@@ -421,79 +450,195 @@ time([[Config for feline.nvim]], false)
 time([[Config for tmux.nvim]], true)
 require("config.tmux")
 time([[Config for tmux.nvim]], false)
--- Config for: nvim-ufo
-time([[Config for nvim-ufo]], true)
-require('config.ufo')
-time([[Config for nvim-ufo]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require('config.filetype')
-time([[Config for filetype.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require("config.comment")
 time([[Config for Comment.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("config.treesitter")
-time([[Config for nvim-treesitter]], false)
+-- Config for: orgmode.nvim
+time([[Config for orgmode.nvim]], true)
+require("config.orgmode")
+time([[Config for orgmode.nvim]], false)
+-- Config for: nvim-ufo
+time([[Config for nvim-ufo]], true)
+require('config.ufo')
+time([[Config for nvim-ufo]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Clocate lua require("packer.load")({'vim-eunuch'}, { cmd = "Clocate", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Lfind lua require("packer.load")({'vim-eunuch'}, { cmd = "Lfind", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SudoWrite lua require("packer.load")({'vim-eunuch'}, { cmd = "SudoWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SudoEdit lua require("packer.load")({'vim-eunuch'}, { cmd = "SudoEdit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Wall lua require("packer.load")({'vim-eunuch'}, { cmd = "Wall", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FormatWrite lua require("packer.load")({'formatter.nvim'}, { cmd = "FormatWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZAtaraxis lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZAtaraxis", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TroubleToggle lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TableModeToggle lua require("packer.load")({'vim-table-mode'}, { cmd = "TableModeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Pydocstring lua require("packer.load")({'vim-pydocstring'}, { cmd = "Pydocstring", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Sayonara lua require("packer.load")({'vim-sayonara'}, { cmd = "Sayonara", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Delete lua require("packer.load")({'vim-eunuch'}, { cmd = "Delete", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Unlink lua require("packer.load")({'vim-eunuch'}, { cmd = "Unlink", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Move lua require("packer.load")({'vim-eunuch'}, { cmd = "Move", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Rename lua require("packer.load")({'vim-eunuch'}, { cmd = "Rename", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Chmod lua require("packer.load")({'vim-eunuch'}, { cmd = "Chmod", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Mkdir lua require("packer.load")({'vim-eunuch'}, { cmd = "Mkdir", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Cfind lua require("packer.load")({'vim-eunuch'}, { cmd = "Cfind", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.api.nvim_create_user_command, 'FormatWrite', function(cmdargs)
+          require('packer.load')({'formatter.nvim'}, { cmd = 'FormatWrite', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'formatter.nvim'}, { cmd = 'FormatWrite' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FormatWrite ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Sayonara', function(cmdargs)
+          require('packer.load')({'vim-sayonara'}, { cmd = 'Sayonara', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-sayonara'}, { cmd = 'Sayonara' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Sayonara ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TroubleToggle', function(cmdargs)
+          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('TroubleToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Pydocstring', function(cmdargs)
+          require('packer.load')({'vim-pydocstring'}, { cmd = 'Pydocstring', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-pydocstring'}, { cmd = 'Pydocstring' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Pydocstring ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TableModeToggle', function(cmdargs)
+          require('packer.load')({'vim-table-mode'}, { cmd = 'TableModeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-table-mode'}, { cmd = 'TableModeToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('TableModeToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'StartupTime', function(cmdargs)
+          require('packer.load')({'startuptime.vim'}, { cmd = 'StartupTime', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'startuptime.vim'}, { cmd = 'StartupTime' }, _G.packer_plugins)
+          return vim.fn.getcompletion('StartupTime ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Delete', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Delete', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Delete' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Delete ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Unlink', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Unlink', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Unlink' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Unlink ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Move', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Move', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Move' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Move ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Rename', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Rename', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Rename' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Rename ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Chmod', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Chmod', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Chmod' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Chmod ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TZAtaraxis', function(cmdargs)
+          require('packer.load')({'TrueZen.nvim'}, { cmd = 'TZAtaraxis', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'TrueZen.nvim'}, { cmd = 'TZAtaraxis' }, _G.packer_plugins)
+          return vim.fn.getcompletion('TZAtaraxis ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Mkdir', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Mkdir', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Mkdir' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Mkdir ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Cfind', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Cfind', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Cfind' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Cfind ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Clocate', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Clocate', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Clocate' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Clocate ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Lfind', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Lfind', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Lfind' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Lfind ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'SudoWrite', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'SudoWrite', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'SudoWrite' }, _G.packer_plugins)
+          return vim.fn.getcompletion('SudoWrite ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'SudoEdit', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'SudoEdit', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'SudoEdit' }, _G.packer_plugins)
+          return vim.fn.getcompletion('SudoEdit ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Wall', function(cmdargs)
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Wall', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-eunuch'}, { cmd = 'Wall' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Wall ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Telescope', function(cmdargs)
+          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Telescope ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[onoremap <silent> W <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "W", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[onoremap <silent> w <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "w", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[onoremap <silent> I <cmd>lua require("packer.load")({'targets.vim'}, { keys = "I", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> B <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "B", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> W <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "W", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> b <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "b", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> w <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "w", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[onoremap <silent> A <cmd>lua require("packer.load")({'targets.vim'}, { keys = "A", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> ? <cmd>lua require("packer.load")({'vim-cool'}, { keys = "?", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> - <cmd>lua require("packer.load")({'vim-dirvish'}, { keys = "-", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[onoremap <silent> a <cmd>lua require("packer.load")({'targets.vim'}, { keys = "a", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[nnoremap <silent> / <cmd>lua require("packer.load")({'vim-cool'}, { keys = "/", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[nnoremap <silent> # <cmd>lua require("packer.load")({'vim-cool'}, { keys = "#", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[nnoremap <silent> * <cmd>lua require("packer.load")({'vim-cool'}, { keys = "*", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> b <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "b", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> ? <cmd>lua require("packer.load")({'vim-cool'}, { keys = "?", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> / <cmd>lua require("packer.load")({'vim-cool'}, { keys = "/", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[onoremap <silent> W <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "W", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[onoremap <silent> w <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "w", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> B <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "B", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[onoremap <silent> a <cmd>lua require("packer.load")({'targets.vim'}, { keys = "a", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> - <cmd>lua require("packer.load")({'vim-dirvish'}, { keys = "-", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> W <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "W", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[onoremap <silent> i <cmd>lua require("packer.load")({'targets.vim'}, { keys = "i", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[onoremap <silent> A <cmd>lua require("packer.load")({'targets.vim'}, { keys = "A", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[onoremap <silent> I <cmd>lua require("packer.load")({'targets.vim'}, { keys = "I", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[nnoremap <silent> w <cmd>lua require("packer.load")({'vim-wordmotion'}, { keys = "w", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType python ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "python" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-pencil'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType org ++once lua require("packer.load")({'vim-pencil'}, { ft = "org" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-pencil'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType go ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "go" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType go ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "go" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "cpp" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)

@@ -34,11 +34,11 @@ local function handler(virtText, lnum, endLnum, width, truncate)
 	return newVirtText
 end
 
-require("ufo").setup({
-	-- provider_selector = function(bufnr, filetype, buftype)
-	-- 	-- Use treesitter for folding info
-	-- 	return { "treesitter", "indent" }
-	-- end,
+-- require("ufo").setup({
+-- 	-- provider_selector = function(bufnr, filetype, buftype)
+-- 	-- 	-- Use treesitter for folding info
+-- 	-- 	return { "treesitter", "indent" }
+-- 	-- end,
 
-	fold_virt_text_handler = handler,
-})
+-- 	fold_virt_text_handler = handler,
+-- })

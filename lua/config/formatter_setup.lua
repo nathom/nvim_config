@@ -1,17 +1,19 @@
 local extensions = {
 	"c",
-	"json",
-	"lua",
-	"py",
-	"rs",
-	"js",
 	"cpp",
+	"go",
 	"h",
 	"hpp",
-	"go",
-	"java",
-	"tex",
 	"hs",
+	"ino",
+	"java",
+	"js",
+	"json",
+	"lua",
+	"md",
+	"py",
+	"rs",
+	"tex",
 }
 
 local extension_str = "*." .. table.concat(extensions, ",*.")

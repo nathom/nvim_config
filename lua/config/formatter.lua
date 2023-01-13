@@ -79,6 +79,14 @@ local function latexindent()
 	}
 end
 
+local function fold()
+	return {
+		exe = "fold",
+		args = { "-s" },
+		stdin = true,
+	}
+end
+
 -- local function cmake_format()
 --   return { exe = 'cmake-format', args = { vim.fn.expand '%:t' }, stdin = false }
 -- end
@@ -86,19 +94,21 @@ end
 local formatter_setup = {
 	logging = false,
 	filetype = {
-		c = { clangformat },
 		-- cmake = { cmake_format },
-		cpp = { clangformat },
 		-- html = { prettier },
+		arduino = { clangformat },
+		c = { clangformat },
+		cpp = { clangformat },
+		go = { gofmt },
+		haskell = { ormolu },
+		java = { clangformat },
 		javascript = { prettier },
 		json = { prettier },
 		lua = { stylua },
+		markdown = { fold },
 		python = { isort, black },
 		rust = { rustfmt },
-		go = { gofmt },
-		java = { clangformat },
 		tex = { latexindent },
-		haskell = { ormolu },
 	},
 }
 
