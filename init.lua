@@ -21,32 +21,32 @@ Welcome to my neovim config!
     │    ...
     │   └── utils.lua        // Common utility functions
     ├── packer_compiled.lua
-    └── plugins.lua          // An annotated list of my plugins 
+    └── plugins.lua          // An annotated list of my plugins
 ]]
 
 -- CREDIT: Heavily inspired by https://github.com/wbthomason/dotfiles
 
--- Automatically install packer.nvim
+-- require("lazy").setup(plugins, opts)
 
 local fn = vim.fn
 local cmd = vim.cmd
 local start = os.clock()
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
 		"git",
 		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
-	cmd("packadd packer.nvim")
 end
+vim.opt.rtp:prepend(lazypath)
 
 -- Improve startup time
-require("impatient")
+-- require("impatient")
 
 --[[
 Splitting my init.lua config into multiple files allows
@@ -55,10 +55,11 @@ a significant startup time improvement.
 ]]
 
 -- All of my plugins
-require("plugins")
+require("opts")
+require("lazy").setup("plugins")
+-- require("plugins")
 
 -- All of my options
-require("opts")
 
 -- All of my key mappings
 require("mappings")
@@ -73,4 +74,4 @@ cmd("colorscheme gruvbox")
 
 -- Cache the humungous packer_compiled.lua file with impatient.nvim
 -- for a solid speedup
-require("packer_compiled")
+-- require("packer_compiled")

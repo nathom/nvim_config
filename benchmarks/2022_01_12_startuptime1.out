@@ -1,0 +1,163 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.006  000.006: --- NVIM STARTING ---
+000.135  000.130: event init
+000.306  000.170: early init
+000.739  000.433: locale set
+000.771  000.032: init first window
+014.906  014.135: inits 1
+014.916  000.011: window checked
+014.919  000.003: parsing arguments
+015.315  000.068  000.068: require('vim.shared')
+015.402  000.032  000.032: require('vim._meta')
+015.403  000.086  000.054: require('vim._editor')
+015.404  000.189  000.036: require('vim._init_packages')
+015.406  000.297: init lua interpreter
+015.645  000.240: expanding arguments
+015.691  000.046: inits 2
+015.940  000.249: init highlight
+015.941  000.001: waiting for UI
+017.995  002.054: done waiting for UI
+018.004  000.009: init screen for UI
+018.127  000.123: init default mappings
+018.136  000.009: init default autocommands
+019.658  000.066  000.066: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/ftplugin.vim
+019.894  000.026  000.026: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/indent.vim
+022.802  002.637  002.637: require('impatient')
+023.195  000.084  000.084: require('packer.util')
+023.212  000.235  000.152: require('packer')
+023.462  000.247  000.247: require('packer.log')
+023.671  000.110  000.110: require('packer.async')
+023.804  000.062  000.062: require('packer.result')
+023.807  000.134  000.072: require('packer.jobs')
+023.811  000.334  000.090: require('packer.plugin_utils')
+023.895  000.074  000.074: require('packer.snapshot')
+024.036  001.231  000.341: require('plugins')
+024.243  000.004  000.004: require('vim.keymap')
+024.245  000.111  000.106: require('config.utils')
+024.422  000.384  000.273: require('opts')
+024.738  000.314  000.314: require('mappings')
+024.854  000.116  000.116: require('autocommands')
+025.555  000.078  000.078: require('gruvbox')
+025.848  000.282  000.282: require('gruvbox.groups')
+025.938  000.089  000.089: require('gruvbox.palette')
+026.626  001.176  000.728: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/gruvbox.nvim/colors/gruvbox.lua
+027.413  000.183  000.183: require('config.telescope_setup')
+027.545  000.130  000.130: require('config.formatter_setup')
+027.768  000.088  000.088: require('cool-substitute')
+028.039  000.189  000.189: require('cool-substitute.substitute')
+028.041  000.271  000.082: require('cool-substitute.map')
+028.500  000.953  000.594: require('config.cool')
+028.891  000.067  000.067: require('retrail.config.defaults')
+028.893  000.162  000.095: require('retrail.config')
+028.895  000.273  000.111: require('retrail')
+028.928  000.426  000.153: require('config.retrail')
+029.028  000.099  000.099: require('config.vimtex')
+029.120  000.090  000.090: require('config.rooter')
+029.655  000.121  000.121: require('vim.treesitter.language')
+029.662  000.269  000.147: require('vim.treesitter.query')
+030.182  000.138  000.138: require('vim.treesitter.languagetree')
+030.204  000.271  000.133: require('vim.treesitter')
+030.302  000.499  000.228: require('nvim-treesitter.parsers')
+030.380  000.076  000.076: require('nvim-treesitter.utils')
+030.384  000.654  000.079: require('nvim-treesitter.ts_utils')
+030.387  000.724  000.070: require('nvim-treesitter.tsrange')
+030.451  000.062  000.062: require('nvim-treesitter.caching')
+030.457  001.132  000.077: require('nvim-treesitter.query')
+030.468  001.231  000.099: require('nvim-treesitter.configs')
+030.559  000.091  000.091: require('orgmode')
+030.728  000.061  000.061: require('nvim-treesitter.info')
+030.803  000.075  000.075: require('nvim-treesitter.shell_command_selectors')
+030.822  000.255  000.120: require('nvim-treesitter.install')
+053.578  024.457  022.880: require('config.treesitter')
+053.744  000.077  000.077: require('filetype')
+053.745  000.165  000.088: require('config.filetype')
+053.930  000.105  000.105: require('feline.providers.vi_mode')
+053.996  000.064  000.064: require('diffstatus')
+054.104  000.048  000.048: require('feline.utils')
+054.158  000.053  000.053: require('feline.defaults')
+054.161  000.161  000.060: require('feline')
+054.304  000.055  000.055: require('feline.providers')
+054.399  000.046  000.046: require('feline.themes.default')
+054.401  000.095  000.049: require('feline.themes')
+054.467  000.057  000.057: require('feline.generator')
+054.474  000.728  000.191: require('config.feline')
+054.575  000.101  000.101: require('config.tmux')
+054.693  000.049  000.049: require('Comment')
+054.741  000.047  000.047: require('Comment.config')
+054.904  000.060  000.060: require('Comment.ft')
+054.907  000.116  000.057: require('Comment.utils')
+054.956  000.048  000.048: require('Comment.opfunc')
+055.003  000.047  000.047: require('Comment.extra')
+055.005  000.263  000.052: require('Comment.api')
+055.113  000.537  000.178: require('config.comment')
+055.401  000.059  000.059: require('orgmode.utils.promise')
+055.406  000.154  000.095: require('orgmode.utils')
+055.467  000.061  000.061: require('orgmode.config.defaults')
+055.580  000.051  000.051: require('orgmode.config.mappings.map_entry')
+055.868  000.400  000.349: require('orgmode.config.mappings')
+055.924  000.729  000.114: require('orgmode.config')
+056.019  000.905  000.176: require('config.orgmode')
+056.186  000.061  000.061: require('ufo')
+056.237  000.217  000.156: require('config.ufo')
+056.347  029.714  000.722: require('packer_compiled')
+056.348  036.267  000.694: sourcing /Users/nathan/.config/nvim/init.lua
+056.354  001.860: sourcing vimrc file(s)
+056.476  000.014  000.014: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/filetype.nvim/filetype.vim
+056.651  000.013  000.013: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/filetype.lua
+056.699  000.009  000.009: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/filetype.vim
+056.970  000.047  000.047: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/syntax/synload.vim
+057.036  000.264  000.217: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/syntax/syntax.vim
+057.226  000.004  000.004: require('vim.F')
+058.331  000.009  000.009: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/gzip.vim
+058.369  000.007  000.007: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/health.vim
+058.408  000.008  000.008: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/matchit.vim
+058.446  000.008  000.008: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/matchparen.vim
+058.489  000.011  000.011: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/netrwPlugin.vim
+058.527  000.007  000.007: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/rplugin.vim
+058.563  000.006  000.006: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/shada.vim
+058.608  000.013  000.013: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/spellfile.vim
+058.649  000.010  000.010: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/tarPlugin.vim
+058.694  000.009  000.009: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/tohtml.vim
+058.739  000.013  000.013: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/tutor.vim
+058.782  000.012  000.012: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/zipPlugin.vim
+059.286  000.014  000.014: sourcing /opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/plugin/man.lua
+059.305  002.518: loading rtp plugins
+059.962  000.045  000.045: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/Comment.nvim/plugin/Comment.lua
+060.155  000.009  000.009: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/diffstatus.nvim/plugin/diffstatus.vim
+060.350  000.011  000.011: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/easy-replace.nvim/plugin/easy_replace.vim
+060.756  000.007  000.007: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/imagepaste.nvim/plugin/imagepaste.vim
+061.006  000.009  000.009: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/nvim-bqf/plugin/bqf.vim
+061.476  000.056  000.056: require('nvim-treesitter.statusline')
+061.548  000.056  000.056: require('nvim-treesitter.query_predicates')
+061.550  000.247  000.136: require('nvim-treesitter')
+061.774  000.483  000.236: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.lua
+061.967  000.017  000.017: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons/plugin/nvim-web-devicons.vim
+062.155  000.009  000.009: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/orgmode.nvim/plugin/orgmode.vim
+062.398  000.007  000.007: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/pandoc.nvim/plugin/pandoc.vim
+062.599  000.016  000.016: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim
+062.983  000.112  000.112: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/tabular/plugin/Tabular.vim
+063.341  000.023  000.023: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vim-gitbranch/plugin/gitbranch.vim
+063.610  000.091  000.091: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vim-rooter/plugin/rooter.vim
+064.018  000.236  000.236: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vim-sleuth/plugin/sleuth.vim
+064.387  000.197  000.197: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+064.598  000.021  000.021: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vimtex/plugin/vimtex.vim
+064.747  004.148: loading packages
+066.341  000.114  000.114: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/tabular/autoload/tabular.vim
+067.226  001.165  001.051: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/tabular/after/plugin/TabularMaps.vim
+067.381  001.469: loading after plugins
+067.386  000.006: inits 3
+067.430  000.044: opening buffers
+067.937  000.031  000.031: sourcing /Users/nathan/.local/share/nvim/site/pack/packer/start/vim-gitbranch/autoload/gitbranch.vim
+068.105  000.644: BufEnter autocommands
+068.106  000.002: editing files in windows
+068.155  000.049: VimEnter autocommands
+068.156  000.001: UIEnter autocommands
+068.157  000.001: before starting main loop
+068.646  000.085  000.085: require('feline.providers.cursor')
+069.083  000.841: first screen update
+069.085  000.001: --- NVIM STARTED ---
