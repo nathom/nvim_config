@@ -25,7 +25,7 @@ There are 4 "secrets" to maintaining a snappy Neovim:
 
 1. Profile: Use `tweekmonster/startuptime.vim`
 
-2. Lazy loading: Use `wbthomason/packer.nvim`. Try to lazy load every
+2. Lazy loading: Use the `lazy.nvim` plugin manager. Try to lazy load every
    plugin. 
 
 3. Compile Lua code: See `lewis6991/impatient.nvim`. This essentially
