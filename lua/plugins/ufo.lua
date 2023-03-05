@@ -47,4 +47,5 @@ return {
 		-- })
 	end,
 	dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
+	enabled = false,
 }

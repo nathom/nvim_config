@@ -5,7 +5,7 @@ return {
 	dir = "~/tmux.nvim",
 	-- "nathom/tmux.nvim",
 	config = function(plugin)
-		local map = require("config.utils").map
+		local map = require("utils").map
 
 		map("n", "<Left>", [[<cmd>lua require('tmux').move_left()<cr>]])
 		map("n", "<Down>", [[<cmd>lua require('tmux').move_down()<cr>]])

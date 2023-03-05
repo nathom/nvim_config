@@ -1,1 +1,1 @@
-return "stevearc/vim-arduino"
+return { "stevearc/vim-arduino", ft = "arduino" }

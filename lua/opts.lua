@@ -1,8 +1,12 @@
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
-local utils = require("config.utils")
+local utils = require("utils")
 local opt = utils.opt
+
+-- Leader/local leader
+g.mapleader = [[ ]]
+g.maplocalleader = [[,]]
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {

@@ -2,7 +2,7 @@
 return {
 	"lervag/vimtex",
 	config = function(plugin)
-		map = require("config.utils").map
+		map = require("utils").map
 
 		vim.g.vimtex_view_method = "skim"
 
@@ -16,4 +16,5 @@ return {
 		-- }
 		-- vim.cmd([[call vimtex#compiler#generic#init({'name': 'pdflatex', 'continuous': 0})]])
 	end,
+	ft = { "tex", "latex" },
 }

@@ -8,11 +8,12 @@ return {
 		"nvim-lua/popup.nvim",
 		"nvim-lua/plenary.nvim",
 		-- "telescope-frecency.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"kyazdani42/nvim-web-devicons",
 	},
 	init = function(plugin)
-		local map = require("config.utils").map
-		local is_in_repo = require("config.utils").is_in_repo
+		local map = require("utils").map
+		local is_in_repo = require("utils").is_in_repo
 
 		local silent = { silent = true }
 

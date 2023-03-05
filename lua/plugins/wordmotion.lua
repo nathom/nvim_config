@@ -3,11 +3,11 @@
 return {
 	"chaoren/vim-wordmotion",
 	keys = {
-		{ "n", "w" },
-		{ "n", "b" },
-		{ "n", "W" },
-		{ "n", "B" },
-		{ "o", "w" },
-		{ "o", "W" },
+		{ "w", mode = "n" },
+		{ "b", mode = "n" },
+		{ "W", mode = "n" },
+		{ "B", mode = "n" },
+		{ "w", mode = "o" },
+		{ "W", mode = "o" },
 	},
 }

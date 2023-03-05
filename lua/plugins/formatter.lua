@@ -86,6 +86,15 @@ local function fold()
 		stdin = true,
 	}
 end
+
+local function wrapper()
+	return {
+		-- exe = "/Users/nathan/wrapper/target/release/wrapper",
+		exe = "/Users/nathan/wrapsody-md/target/release/wrapsody-md",
+		args = { "-l", "70" },
+		stdin = true,
+	}
+end
 -- local function cmake_format()
 --   return { exe = 'cmake-format', args = { vim.fn.expand '%:t' }, stdin = false }
 -- end
@@ -93,7 +102,7 @@ end
 -- Format files on write
 return {
 	"mhartington/formatter.nvim",
-	init = function()
+	init = function(plugin)
 		local extensions = {
 			"c",
 			"cpp",
@@ -136,7 +145,8 @@ augroup END
 				javascript = { prettier },
 				json = { prettier },
 				lua = { stylua },
-				markdown = { fold },
+				-- markdown = { fold },
+				markdown = { wrapper },
 				python = { isort, black },
 				rust = { rustfmt },
 				tex = { latexindent },

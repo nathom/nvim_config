@@ -4,9 +4,9 @@
 return {
 	"wellle/targets.vim",
 	keys = {
-		{ "o", "i" },
-		{ "o", "a" },
-		{ "o", "I" },
-		{ "o", "A" },
+		{ "i", mode = "o" },
+		{ "a", mode = "o" },
+		{ "I", mode = "o" },
+		{ "A", mode = "o" },
 	},
 }

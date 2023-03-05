@@ -10,7 +10,6 @@ return {
 	-- source files
 	-- A tabline that shows the current buffers
 	-- TODO:
-	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
 	-- Gutter signs that show changes to the current file
 	-- Also provides an api that is used by my statusline

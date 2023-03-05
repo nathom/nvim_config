@@ -1,5 +1,5 @@
 local auto = vim.api.nvim_create_autocmd
-local opt = require("config.utils").opt
+local opt = require("utils").opt
 
 auto({ "BufEnter" }, {
 	pattern = { "*.md", "*.tex" },
@@ -8,3 +8,5 @@ auto({ "BufEnter" }, {
 		opt("complete", vim.o.complete .. ",k")
 	end,
 })
+
+-- auto("BufWritePre", { pattern = { "*.md" }, command = "%s/\\s\\+$//e" })

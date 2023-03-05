@@ -1,1 +1,1 @@
-return { "ellisonleao/gruvbox.nvim", priority = 100 }
+return { "ellisonleao/gruvbox.nvim", priority = 1000 }

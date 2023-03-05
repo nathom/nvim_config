@@ -1,2 +1,2 @@
 -- Align characters <leader>a in V mode
-return "godlygeek/tabular"
+return { "godlygeek/tabular", cmd = "Tabularize" }

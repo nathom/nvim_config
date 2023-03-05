@@ -3,7 +3,7 @@ return {
 	event = "BufAdd",
 	dependencies = { "kyazdani42/nvim-web-devicons" },
 	config = function(plugin)
-		local sethl = require("config.utils").sethl
+		local sethl = require("utils").sethl
 
 		local tabline_colors = { "#d3869b", "#ebdbb2" }
 		local tabline_bg = "#282828"

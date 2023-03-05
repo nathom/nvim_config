@@ -2,7 +2,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function(plugin)
-		local utils = require("config.utils")
+		local utils = require("utils")
 		local colors = utils.colors
 		local sethl = utils.sethl
 		local lspconfig = require("lspconfig")

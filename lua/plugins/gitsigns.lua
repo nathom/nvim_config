@@ -2,7 +2,7 @@ return {
 	"lewis6991/gitsigns.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function(plugin)
-		local utils = require("config.utils")
+		local utils = require("utils")
 		local colors = utils.colors
 		local sethl = utils.sethl
 
@@ -50,5 +50,5 @@ return {
 			},
 		})
 	end,
-	enable = false,
+	enabled = false,
 }

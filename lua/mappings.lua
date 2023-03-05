@@ -1,13 +1,9 @@
-local utils = require("config.utils")
+local utils = require("utils")
 local map = utils.map
 local g = vim.g
 local cmd = vim.cmd
 
 local silent = { silent = true }
-
--- Leader/local leader
-g.mapleader = [[ ]]
-g.maplocalleader = [[,]]
 
 -- Fix commonly mistyped words
 cmd("iabbrev teh the")
@@ -67,7 +63,8 @@ map(
 map("n", "<leader>op", [[<cmd>call system("open '" . expand('%:p') . "'")<cr>]])
 
 -- Focus mode
-map("n", "<leader>z", [[<cmd>TZAtaraxis<cr>]])
+-- map("n", "<leader>z", [[<cmd>TZAtaraxis<cr>]])
+map("n", "<leader>z", [[<cmd>ZenMode<cr>]])
 
 local replace_termcodes = vim.api.nvim_replace_termcodes
 local TAB = replace_termcodes("<Tab>", true, false, true)
