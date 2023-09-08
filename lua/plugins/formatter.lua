@@ -1,3 +1,11 @@
+local function verible()
+	return {
+		exe = "verible-verilog-format",
+		args = { "-" },
+		stdin = true,
+	}
+end
+
 local function ormolu()
 	return {
 		exe = "ormolu",
@@ -90,8 +98,8 @@ end
 local function wrapper()
 	return {
 		-- exe = "/Users/nathan/wrapper/target/release/wrapper",
-		exe = "/Users/nathan/wrapsody-md/target/release/wrapsody-md",
-		args = { "-l", "70" },
+		exe = "cmark",
+		args = { "--width", "70", "-t", "commonmark" },
 		stdin = true,
 	}
 end
@@ -119,6 +127,7 @@ return {
 			"py",
 			"rs",
 			"tex",
+			"sv",
 		}
 
 		local extension_str = "*." .. table.concat(extensions, ",*.")
@@ -146,10 +155,11 @@ augroup END
 				json = { prettier },
 				lua = { stylua },
 				-- markdown = { fold },
-				markdown = { wrapper },
+				-- markdown = { wrapper },
 				python = { isort, black },
 				rust = { rustfmt },
 				tex = { latexindent },
+				systemverilog = { verible },
 			},
 		}
 

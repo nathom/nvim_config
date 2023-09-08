@@ -116,9 +116,9 @@ vim.cmd([[set shada="NONE"]])
 -- opt("foldmethod", "expr")
 -- opt("foldexpr", "nvim_treesitter#foldexpr()")
 -- Makes folding less annoying
--- opt("foldnestmax", 2)
+opt("foldnestmax", 2)
 -- Open folds by default
--- opt("foldlevel", 99)
+opt("foldlevel", 99)
 
 opt("completeopt", "menuone,noselect")
 opt("scrolloff", 2)

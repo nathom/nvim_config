@@ -27,7 +27,7 @@ return {
 		-- }
 
 		require("nvim-treesitter.configs").setup({
-			-- ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go" },
+			ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go", "javascript", "haskell" },
 			highlight = {
 				enable = true,
 				disable = { --[[ "markdown", ]]
@@ -76,11 +76,11 @@ return {
 					-- },
 				},
 			},
-			ensure_installed = "all",
+			-- ensure_installed = "all",
 		})
 
-		-- vim.wo.foldmethod = "expr"
-		-- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.wo.foldmethod = "expr"
+		vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 	end,
 	ft = {
 		"ada",
@@ -231,4 +231,5 @@ return {
 		"yang",
 		"zig",
 	},
+	enabled = true,
 }

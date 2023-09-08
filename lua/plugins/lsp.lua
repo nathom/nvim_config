@@ -8,7 +8,16 @@ return {
 		local lspconfig = require("lspconfig")
 		local lsp = vim.lsp
 
-		local servers = { "clangd", "rust_analyzer", "gopls", "pyright", "flow" }
+		local servers = {
+			"clangd",
+			"rust_analyzer",
+			"gopls",
+			"pyright",
+			"quick_lint_js",
+			"svlangserver",
+			-- "rome",
+			--[[ "svls" ]]
+		}
 
 		local function on_attach(client, bufnr)
 			local opts = { noremap = true, silent = true }
@@ -78,5 +87,5 @@ return {
 	-- An annoying thing with this setup is that
 	-- you need to add filetypes to this array when you
 	-- add a new LS.
-	ft = { "c", "cpp", "rust", "go", "python", "javascript" },
+	ft = { "c", "cpp", "rust", "go", "python", "javascript", "systemverilog" },
 }

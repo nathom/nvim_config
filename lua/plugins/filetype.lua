@@ -31,4 +31,5 @@ return {
 		}
 		require("filetype").setup(options)
 	end,
+	enabled = false,
 }
