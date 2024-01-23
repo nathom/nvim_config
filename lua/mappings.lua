@@ -102,7 +102,8 @@ function tabcomplete()
 	elseif col == 1 or line:match("^%s*$") then
 		vim.api.nvim_feedkeys(TAB, "n", true)
 	else
-		vim.api.nvim_feedkeys(CTRL_N, "n", true)
+		vim.api.nvim_input("<C-x><C-o>")
+		-- vim.api.nvim_feedkeys(CTRL_N, "n", true)
 	end
 end
 

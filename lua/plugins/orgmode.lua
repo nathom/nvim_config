@@ -22,4 +22,5 @@ return {
 	priority = 10,
 	keys = { { "<Leader>oa", [[<cmd>lua require("orgmode").action("agenda.prompt")<CR>]], mode = "n" } },
 	ft = { "org" },
+	disabled = true,
 }

@@ -9,6 +9,10 @@ end
 local function ormolu()
 	return {
 		exe = "ormolu",
+		args = {
+			"--stdin-input-file",
+			vim.api.nvim_buf_get_name(0),
+		},
 		stdin = true,
 	}
 end
@@ -52,6 +56,31 @@ local function black()
 	}
 end
 
+local function ruff()
+	return {
+		exe = "ruff",
+		-- args = {
+		-- 	"check",
+		-- 	"--fix",
+		-- 	"--select=E,I,F",
+		-- 	"--stdin-filename",
+		-- 	vim.api.nvim_buf_get_name(0),
+		-- },
+		args = { "format", "--stdin-filename", vim.api.nvim_buf_get_name(0) },
+		stdin = true,
+	}
+end
+
+local function ruff_fix()
+	-- Sort imports (I001)
+	-- Remove unused imports (F401)
+	return {
+		exe = "ruff",
+		args = { "check", "--fix", "--select=I,F401", "--stdin-filename", vim.api.nvim_buf_get_name(0) },
+		stdin = true,
+	}
+end
+
 local function google_java_format()
 	return {
 		exe = "google-java-format",
@@ -82,7 +111,7 @@ end
 local function latexindent()
 	return {
 		exe = "latexindent",
-		-- args = { [[--yaml="defaultIndent=' '"]] },
+		args = { [[--yaml="defaultIndent=' '\n textWrapOptions:\n\t columns: 80"]] },
 		stdin = true,
 	}
 end
@@ -122,9 +151,12 @@ return {
 			"java",
 			"js",
 			"json",
+			"css",
 			"lua",
 			"md",
 			"py",
+			"svelte",
+			"html",
 			"rs",
 			"tex",
 			"sv",
@@ -153,10 +185,14 @@ augroup END
 				java = { clangformat },
 				javascript = { prettier },
 				json = { prettier },
+				svelte = { prettier },
+				html = { prettier },
+				css = { prettier },
 				lua = { stylua },
 				-- markdown = { fold },
 				-- markdown = { wrapper },
-				python = { isort, black },
+				python = { ruff, ruff_fix },
+				-- python = { ruff },
 				rust = { rustfmt },
 				tex = { latexindent },
 				systemverilog = { verible },

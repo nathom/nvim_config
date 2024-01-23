@@ -13,8 +13,11 @@ return {
 			"rust_analyzer",
 			"gopls",
 			"pyright",
+			"ruff_lsp",
 			"quick_lint_js",
 			"svlangserver",
+			"jdtls",
+			"hls",
 			-- "rome",
 			--[[ "svls" ]]
 		}
@@ -87,5 +90,5 @@ return {
 	-- An annoying thing with this setup is that
 	-- you need to add filetypes to this array when you
 	-- add a new LS.
-	ft = { "c", "cpp", "rust", "go", "python", "javascript", "systemverilog" },
+	ft = { "c", "cpp", "rust", "go", "python", "javascript", "systemverilog", "java", "haskell" },
 }

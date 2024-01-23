@@ -27,7 +27,7 @@ return {
 		-- }
 
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go", "javascript", "haskell" },
+			ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go", "javascript", "haskell", "cpp" },
 			highlight = {
 				enable = true,
 				disable = { --[[ "markdown", ]]
