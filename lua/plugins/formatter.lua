@@ -29,6 +29,20 @@ local function prettier()
 	}
 end
 
+local function biome()
+	return {
+		exe = "biome",
+		args = {
+			"format",
+			"--stdin-file-path",
+			vim.api.nvim_buf_get_name(0),
+			"--indent-style=space",
+			"--indent-width=4",
+		},
+		stdin = true,
+	}
+end
+
 function clangformat()
 	local fn = vim.api.nvim_buf_get_name(0):gsub(".*/", "")
 	return {
@@ -76,7 +90,7 @@ local function ruff_fix()
 	-- Remove unused imports (F401)
 	return {
 		exe = "ruff",
-		args = { "check", "--fix", "--select=I,F401", "--stdin-filename", vim.api.nvim_buf_get_name(0) },
+		args = { "check", "--fix", "--select=I,F401,D407,D412", "--stdin-filename", vim.api.nvim_buf_get_name(0) },
 		stdin = true,
 	}
 end
@@ -183,7 +197,7 @@ augroup END
 				go = { gofmt },
 				haskell = { ormolu },
 				java = { clangformat },
-				javascript = { prettier },
+				javascript = { biome },
 				json = { prettier },
 				svelte = { prettier },
 				html = { prettier },

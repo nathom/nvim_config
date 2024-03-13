@@ -1,235 +1,51 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	-- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-	-- commit = "a62971e0efcbe025693ccfaf688b62d185fd50da",
 	config = function(plugin)
-		-- local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
-		-- parser_configs.norg = {
-		--     install_info = {
-		--         url = "https://github.com/nvim-neorg/tree-sitter-norg",
-		--         files = { "src/parser.c", "src/scanner.cc" },
-		--         branch = "main",
-		--     },
-		-- }
-
 		-- Haskell doesn't work without this
 		require("nvim-treesitter.configs").compilers = { "gcc-11" }
 
-		-- parser_configs.org = {
-		-- 	install_info = {
-		-- 		url = "https://github.com/milisims/tree-sitter-org",
-		-- 		-- revision = "f110024d539e676f25b72b7c80b0fd43c34264ef",
-		-- 		files = { "src/parser.c", "src/scanner.cc" },
-		-- 	},
-		-- 	filetype = "org",
-		-- }
-
+		local langs = { "c", "cpp", "rust", "go", "python", "javascript", "java", "haskell", "latex" }
+		local fts = { "c", "cpp", "rust", "go", "python", "javascript", "java", "haskell", "tex" }
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "lua", "python", "rust", "toml", "org", "c", "go", "javascript", "haskell", "cpp" },
+			-- A list of parser names, or "all" (the five listed parsers should always be installed)
+			ensure_installed = langs,
+
+			-- Install parsers synchronously (only applied to `ensure_installed`)
+			sync_install = false,
+
+			-- Automatically install missing parsers when entering buffer
+			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+			auto_install = true,
+
+			-- List of parsers to ignore installing (or "all")
+			ignore_install = {},
+
 			highlight = {
 				enable = true,
-				disable = { --[[ "markdown", ]]
-					"org",
-				},
-				additional_vim_regex_highlighting = { "org" },
-			},
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["]]"] = "@function.outer",
-							-- ["]]"] = "@class.outer",
-						},
-						-- goto_next_end = {
-						-- 	["]M"] = "@function.outer",
-						-- 	-- ["]["] = "@class.outer",
-						-- },
-						goto_previous_start = {
-							["[["] = "@function.outer",
-							-- ["[["] = "@class.outer",
-						},
-						-- goto_previous_end = {
-						-- 	["[M"] = "@function.outer",
-						-- 	-- ["[]"] = "@class.outer",
-						-- },
-					},
-					-- swap = {
-					-- 	enable = true,
-					-- 	swap_next = {
-					-- 		["<leader>a"] = "@parameter.inner",
-					-- 	},
-					-- 	swap_previous = {
-					-- 		["<leader>A"] = "@parameter.inner",
-					-- 	},
-					-- },
-				},
-			},
-			-- ensure_installed = "all",
-		})
 
-		vim.wo.foldmethod = "expr"
-		vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+				-- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+				-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+				-- the name of the parser)
+				-- list of language that will be disabled
+				disable = {},
+				-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+				disable = function(lang, buf)
+					local max_filesize = 100 * 1024 -- 100 KB
+					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+					if ok and stats and stats.size > max_filesize then
+						return true
+					end
+				end,
+
+				-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+				-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+				-- Using this option may slow down your editor, and you may see some duplicate highlights.
+				-- Instead of true it can also be a list of languages
+				additional_vim_regex_highlighting = false,
+			},
+		})
 	end,
-	ft = {
-		"ada",
-		"agda",
-		"arduino",
-		"astro",
-		"awk",
-		"bash",
-		"beancount",
-		"bibtex",
-		"blueprint",
-		"c",
-		"c_sharp",
-		"clojure",
-		"cmake",
-		"comment",
-		"commonlisp",
-		"cooklang",
-		"cpp",
-		"css",
-		"cuda",
-		"d",
-		"dart",
-		"devicetree",
-		"diff",
-		"dockerfile",
-		"dot",
-		"ebnf",
-		"eex",
-		"elixir",
-		"elm",
-		"elvish",
-		"embedded_template",
-		"erlang",
-		"fennel",
-		"fish",
-		"foam",
-		"fortran",
-		"fusion",
-		"gdscript",
-		"git_rebase",
-		"gitattributes",
-		"gitcommit",
-		"gitignore",
-		"gleam",
-		"glimmer",
-		"glsl",
-		"go",
-		"godot_resource",
-		"gomod",
-		"gowork",
-		"graphql",
-		"hack",
-		"haskell",
-		"hcl",
-		"heex",
-		"help",
-		"hjson",
-		"hlsl",
-		"hocon",
-		"html",
-		"http",
-		"java",
-		"javascript",
-		"jq",
-		"jsdoc",
-		"json",
-		"json5",
-		"jsonc",
-		"jsonnet",
-		"julia",
-		"kotlin",
-		"lalrpop",
-		"latex",
-		"ledger",
-		"llvm",
-		"lua",
-		"m68k",
-		"make",
-		"markdown",
-		"markdown_inline",
-		"menhir",
-		"mermaid",
-		"meson",
-		"nickel",
-		"ninja",
-		"nix",
-		"norg",
-		"ocaml",
-		"ocaml_interface",
-		"ocamllex",
-		"org",
-		"pascal",
-		"perl",
-		"php",
-		"phpdoc",
-		"pioasm",
-		"prisma",
-		"proto",
-		"pug",
-		"python",
-		"ql",
-		"qmljs",
-		"query",
-		"r",
-		"racket",
-		"rasi",
-		"regex",
-		"rego",
-		"rnoweb",
-		"rst",
-		"ruby",
-		"rust",
-		"scala",
-		"scheme",
-		"scss",
-		"slint",
-		"smali",
-		"solidity",
-		"sparql",
-		"sql",
-		"supercollider",
-		"surface",
-		"svelte",
-		"swift",
-		"sxhkdrc",
-		"t32",
-		"teal",
-		"terraform",
-		"tex",
-		"tiger",
-		"tlaplus",
-		"todotxt",
-		"toml",
-		"tsx",
-		"turtle",
-		"twig",
-		"typescript",
-		"v",
-		"vala",
-		"verilog",
-		"vhs",
-		"vim",
-		"vue",
-		"wgsl",
-		"wgsl_bevy",
-		"yaml",
-		"yang",
-		"zig",
-	},
+	ft = langs,
 	enabled = true,
 }

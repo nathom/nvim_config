@@ -10,6 +10,7 @@ return {
 		-- "telescope-frecency.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"kyazdani42/nvim-web-devicons",
+		-- "nvim-telescope/telescope-ui-select.nvim",
 	},
 	init = function(plugin)
 		local map = require("utils").map
@@ -76,6 +77,7 @@ return {
 		})
 
 		telescope.load_extension("fzf")
+		-- telescope.load_extension("ui-select")
 		-- telescope.load_extension("neoclip")
 	end,
 	cmd = "Telescope",

@@ -49,6 +49,8 @@ map("n", "<leader>t", "<cmd>TroubleToggle<cr>", silent)
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
+map("n", "L", vim.diagnostic.open_float)
+
 -- Open main org file
 map(
 	"n",

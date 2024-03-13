@@ -11,4 +11,6 @@ return {
 		require("ufo").setup()
 		vim.cmd([[hi clear UfoFoldedBg]])
 	end,
+	-- 7ms startup time and not super useful
+	enabled = false,
 }
