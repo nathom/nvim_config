@@ -216,4 +216,5 @@ augroup END
 		require("formatter").setup(formatter_setup)
 	end,
 	cmd = "FormatWrite",
+	enabled = false,
 }

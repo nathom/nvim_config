@@ -1,2 +1,3 @@
 -- Packer
-return { "sindrets/diffview.nvim", enabled = true }
+return { "sindrets/diffview.nvim", enabled = true, cmd = { "DiffviewOpen", "DiffviewFileHistory" }
+ }

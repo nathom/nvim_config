@@ -109,6 +109,7 @@ local function git_diff_added()
 	local fn = expand("%")
 	local status = index[fn]
 	if status and status[1] > 0 then
+		-- return tostring(status[1]) .. " ＋ "
 		return tostring(status[1]) .. "  "
 	end
 
@@ -119,6 +120,7 @@ local function git_diff_removed()
 	local status = index[fn]
 	if status and status[2] > 0 then
 		return tostring(status[2]) .. "  "
+		-- return tostring(status[2]) .. " － "
 	end
 
 	return ""
@@ -148,7 +150,7 @@ local mode_highlight = {
 
 return {
 	"famiu/feline.nvim",
-	config = function(plugin)
+	config = function(_)
 		local vi_mode_utils = require("feline.providers.vi_mode")
 		local vim_mode = require("feline.providers.vi_mode").get_vim_mode
 		local status_left = {
