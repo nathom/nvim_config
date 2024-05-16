@@ -2,7 +2,7 @@ return {
 	"jose-elias-alvarez/buftabline.nvim",
 	event = "BufAdd",
 	dependencies = { "kyazdani42/nvim-web-devicons" },
-	config = function(plugin)
+	config = function()
 		local sethl = require("utils").sethl
 
 		local tabline_colors = { "#d3869b", "#ebdbb2" }
@@ -17,4 +17,5 @@ return {
 			go_to_maps = true,
 		})
 	end,
+	enabled = false,
 }

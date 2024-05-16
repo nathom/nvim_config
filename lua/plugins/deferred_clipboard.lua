@@ -5,4 +5,5 @@ return {
 			lazy = true,
 		})
 	end,
+	enabled = false,
 }

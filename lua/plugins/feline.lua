@@ -6,36 +6,38 @@ local utils = require("utils")
 local colors = utils.colors
 
 local getcwd = vim.fn.getcwd
-local math_letters = {
-	"𝐀",
-	"𝐁",
-	"𝐂",
-	"𝐃",
-	"𝐄",
-	"𝐅",
-	"𝐆",
-	"𝐇",
-	"𝐈",
-	"𝐉",
-	"𝐊",
-	"𝐋",
-	"𝐌",
-	"𝐍",
-	"𝐎",
-	"𝐏",
-	"𝐐",
-	"𝐑",
-	"𝐒",
-	"𝐓",
-	"𝐔",
-	"𝐕",
-	"𝐖",
-	"𝐗",
-	"𝐘",
-	"𝐙",
+
+local boldEnglishLetters = {
+	"𝗔", -- A
+	"𝗕", -- B
+	"𝗖", -- C
+	"𝗗", -- D
+	"𝗘", -- E
+	"𝗙", -- F
+	"𝗚", -- G
+	"𝗛", -- H
+	"𝗜", -- I
+	"𝗝", -- J
+	"𝗞", -- K
+	"𝗟", -- L
+	"𝗠", -- M
+	"𝗡", -- N
+	"𝗢", -- O
+	"𝗣", -- P
+	"𝗤", -- Q
+	"𝗥", -- R
+	"𝗦", -- S
+	"𝗧", -- T
+	"𝗨", -- U
+	"𝗩", -- V
+	"𝗪", -- W
+	"𝗫", -- X
+	"𝗬", -- Y
+	"𝗭", -- Z
 }
+
 local function mode_to_math_letter(mode)
-	return " " .. (math_letters[mode:byte(1) - 64] or " ") .. " "
+	return " " .. (boldEnglishLetters[mode:byte(1) - 64] or " ") .. " "
 end
 
 local git_branch = vim.fn["gitbranch#name"]

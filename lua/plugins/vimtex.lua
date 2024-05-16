@@ -1,12 +1,15 @@
 -- The Ultimate LaTeX plugin
 return {
 	"lervag/vimtex",
-	config = function(plugin)
-		map = require("utils").map
-
+	init = function()
+		local opt = require("utils").opt
+		vim.g.tex_flavor = "latex"
 		vim.g.vimtex_view_method = "skim"
-
-		map("n", "<leader>ba", "o\\begin{align*}<cr>\\end{align*}<esc>O", { silent = true })
+		vim.g.quickfix_mode = 0
+		opt("conceallevel", 1)
+		vim.g.tex_conceal = "abdmg"
+	end,
+	config = function(plugin)
 
 		-- vim.g.vimtex_compiler_method = "generic"
 		-- vim.g.vimtex_compiler_generic = {

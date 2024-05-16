@@ -28,9 +28,7 @@ Welcome to my neovim config!
 
 -- require("lazy").setup(plugins, opts)
 
-local fn = vim.fn
 local cmd = vim.cmd
-local start = os.clock()
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -45,21 +43,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Improve startup time
--- require("impatient")
+-- Precompile lua modules
+vim.loader.enable()
 
---[[
-Splitting my init.lua config into multiple files allows
-impatient.nvim to compile and cache them, resulting in
-a significant startup time improvement.
-]]
-
--- All of my plugins
+-- All of my options
 require("opts")
 require("lazy").setup("plugins")
 -- require("plugins")
-
--- All of my options
 
 -- All of my key mappings
 require("mappings")
@@ -69,9 +59,3 @@ require("autocommands")
 
 -- The greatest colorscheme!
 cmd("colorscheme gruvbox")
-
--- require("autocommands")
-
--- Cache the humungous packer_compiled.lua file with impatient.nvim
--- for a solid speedup
--- require("packer_compiled")

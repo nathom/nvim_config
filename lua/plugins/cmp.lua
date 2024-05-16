@@ -12,7 +12,6 @@ return {
 				-- require("nvchad.configs.luasnip")
 			end,
 		},
-
 		-- autopairing of (){}[] etc
 		{
 			"windwp/nvim-autopairs",

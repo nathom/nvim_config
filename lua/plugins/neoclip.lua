@@ -10,4 +10,5 @@ return {
 	config = function()
 		require("neoclip").setup()
 	end,
+	enabled = false,
 }

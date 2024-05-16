@@ -65,5 +65,8 @@ function M.visual_selection_range()
 		return cerow - 1, cecol - 1, csrow - 1, cscol
 	end
 end
+function M.mason_path(exec_name)
+	return vim.fn.stdpath("data") .. "/mason/bin/" .. exec_name
+end
 
 return M

@@ -1,6 +1,9 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
+		require("conform").formatters.latexindent = {
+			prepend_args = { "-m", "--yaml", [[modifyLineBreaks: textWrapOptions: columns: 80]] },
+		}
 		require("conform").setup({
 			formatters_by_ft = {
 				arduino = { "clang_format" },
@@ -20,6 +23,13 @@ return {
 				toml = { "taplo" },
 				css = { "prettierd" },
 				xml = { "xmlformat" },
+			},
+			formatters = {
+				verible = {
+					command = "verible-verilog-format",
+					args = { "--stdin_name", "$FILENAME", "-" },
+					stdin = true,
+				},
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
