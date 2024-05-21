@@ -39,25 +39,6 @@ return {
 			local lspconfig = require("lspconfig")
 			local lsp = vim.lsp
 
-			-- local servers = {
-			-- 	"clangd",
-			-- 	"rust_analyzer",
-			-- 	"gopls",
-			-- 	"pyright",
-			-- 	"ruff_lsp",
-			-- 	"lua_ls",
-			-- 	-- "quick_lint_js",
-			-- 	"svlangserver",
-			-- 	"texlab",
-			-- 	"jdtls",
-			-- 	-- "java_language_server",
-			-- 	"hls",
-			-- 	"zls",
-			-- 	"biome",
-			-- 	"tsserver",
-			-- 	--[[ "svls" ]]
-			-- }
-
 			local function on_attach(_, bufnr)
 				local opts = { noremap = true, silent = true }
 				local function lsp_map(mapping, action)
@@ -78,9 +59,6 @@ return {
 				lsp_map("K", "hover")
 				lsp_map("gi", "implementation")
 				lsp_map("<C-k>", "signature_help")
-				-- lsp_map("<space>wa", "add_workspace_folder")
-				-- lsp_map("<space>wr", "remove_workspace_folder")
-				-- lsp_map("<space>wl", "list_workspace_folders")
 				lsp_map("<leader>D", "type_definition")
 				lsp_map("<leader>rn", "rename")
 				lsp_map("<leader>ca", "code_action")

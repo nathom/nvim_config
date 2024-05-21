@@ -1,3 +1,4 @@
+-- Tabline for each open buffer
 return {
 	"jose-elias-alvarez/buftabline.nvim",
 	event = "BufAdd",
