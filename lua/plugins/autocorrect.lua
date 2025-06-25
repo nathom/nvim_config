@@ -1,6 +1,6 @@
 -- Fix commonly misspelled words
 return {
-	dir = "~/vim-autocorrect",
+	dir = "nathom/autocorrect.nvim",
 	ft = { "markdown" },
 	config = function()
 		require("autocorrect").Autocorrect()
