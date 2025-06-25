@@ -44,6 +44,9 @@ map("n", "L", vim.diagnostic.open_float)
 -- Open file using system application
 map("n", "<leader>op", [[<cmd>call system("open '" . expand('%:p') . "'")<cr>]])
 
+vim.keymap.del({ "n" }, "<C-w>d")
+vim.keymap.del({ "n" }, "<C-w><C-d>")
+
 local function smart_dd()
 	if vim.api.nvim_get_current_line():match("^%s*$") then
 		return '"_dd'

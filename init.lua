@@ -26,8 +26,6 @@ Welcome to my neovim config!
 
 -- CREDIT: Heavily inspired by https://github.com/wbthomason/dotfiles
 
--- require("lazy").setup(plugins, opts)
-
 local cmd = vim.cmd
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

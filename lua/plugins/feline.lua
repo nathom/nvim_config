@@ -63,11 +63,12 @@ end
 local function shortened_filename()
 	-- return "/some/file"
 	-- .config/nvim/init.lua -> .c/n/init.lua
-
 	-- Get relative path
 	local relative = vim.api.nvim_buf_get_name(0):gsub(getcwd() .. "/", "")
 	-- Shorten subdir names to a single character
-	local shortened = relative:gsub([[([^/])[^/]+/]], [[%1/]])
+	local home_replaced = relative:gsub(utils.HOME, [[~]])
+	-- Replace /Users/nathan with ~/
+	local shortened = home_replaced:gsub([[([^/])[^/]+/]], [[%1/]])
 	return " " .. shortened .. " "
 end
 

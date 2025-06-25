@@ -1,16 +1,17 @@
 local servers = {
 	c = { "clangd" },
+	ocaml = { "ocamllsp" },
 	cpp = { "clangd" },
 	rust = { "rust_analyzer" },
 	go = { "gopls" },
-	python = { "pyright", "ruff_lsp" },
+	python = { "pyright", "ruff" },
 	lua = { "lua_ls" },
-	systemverilog = { "svlangserver" },
+	systemverilog = { "svlangserver", "verible" },
 	tex = { "texlab" },
 	java = { "jdtls" },
 	zig = { "zls" },
-	javascript = { "biome", "tsserver" },
-	typescript = { "tsserver" },
+	javascript = { "biome", "ts_ls" },
+	typescript = { "ts_ls" },
 }
 
 local enabled_fts = {}
@@ -39,7 +40,7 @@ return {
 			local lspconfig = require("lspconfig")
 			local lsp = vim.lsp
 
-			local function on_attach(_, bufnr)
+			local function on_attach(client, bufnr)
 				local opts = { noremap = true, silent = true }
 				local function lsp_map(mapping, action)
 					-- Mappings.
@@ -64,6 +65,9 @@ return {
 				lsp_map("<leader>ca", "code_action")
 				lsp_map("gr", "references")
 				-- lsp_map("<leader>f", "formatting")
+				if client.server_capabilities.inlayHintProvider then
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				end
 			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -72,7 +76,7 @@ return {
 				lineFoldingOnly = true,
 			}
 
-			for ft, ft_servers in pairs(servers) do
+			for _, ft_servers in pairs(servers) do
 				for _, s in ipairs(ft_servers) do
 					local settings
 					if s == "lua_ls" then
@@ -104,10 +108,11 @@ return {
 			local types = { "Error", "Warn", "Hint", "Info" }
 			local signs = {}
 			for _, type in ipairs(types) do
+				signs[type] = "■■"
 				-- signs[type] = ""
 				-- signs[type] = ""
-				-- signs[type] = ""
-				signs[type] = "•"
+				-- signs[type] = ""
+				-- signs[type] = "••"
 				-- signs[type] = ""
 			end
 
@@ -124,28 +129,5 @@ return {
 		end,
 		enabled = true,
 		ft = enabled_fts,
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		config = function()
-			require("mason-nvim-dap").setup({
-				handlers = {
-					function(config)
-						require("mason-nvim-dap").default_setup(config)
-					end,
-					python = function(config)
-						config.adapters = {
-							type = "executable",
-							command = "/Users/nathan/.pyenv/shims/python",
-							args = {
-								"-m",
-								"debugpy.adapter",
-							},
-						}
-						require("mason-nvim-dap").default_setup(config) -- don't forget this!
-					end,
-				},
-			})
-		end,
 	},
 }

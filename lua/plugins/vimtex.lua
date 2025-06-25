@@ -19,5 +19,5 @@ return {
 		-- }
 		-- vim.cmd([[call vimtex#compiler#generic#init({'name': 'pdflatex', 'continuous': 0})]])
 	end,
-	ft = { "tex", "latex" },
+	-- ft = { "tex", "latex" },
 }

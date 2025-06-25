@@ -1,10 +1,14 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
-		require("conform").formatters.latexindent = {
+		local conform = require("conform")
+		conform.formatters.latexindent = {
 			prepend_args = { "-m", "--yaml", [[modifyLineBreaks: textWrapOptions: columns: 80]] },
 		}
-		require("conform").setup({
+		conform.formatters.mdformat = {
+			prepend_args = { "--wrap", "80" },
+		}
+		conform.setup({
 			formatters_by_ft = {
 				arduino = { "clang_format" },
 				c = { "clang_format" },
@@ -22,7 +26,11 @@ return {
 				tex = { "latexindent" },
 				toml = { "taplo" },
 				css = { "prettierd" },
+				ocaml = { "ocamlformat" },
 				xml = { "xmlformat" },
+				-- markdown = { "mdformat" },
+				sh = { "beautysh" },
+				bash = { "beautysh" },
 			},
 			formatters = {
 				verible = {

@@ -2,7 +2,7 @@
 return {
 	"jose-elias-alvarez/buftabline.nvim",
 	event = "BufAdd",
-	dependencies = { "kyazdani42/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local sethl = require("utils").sethl
 

@@ -1,5 +1,4 @@
 local auto = vim.api.nvim_create_autocmd
-local opt = require("utils").opt
 
 -- Autocomplete words from dictionary
 -- auto({ "BufEnter" }, {
@@ -11,3 +10,10 @@ local opt = require("utils").opt
 -- })
 
 -- auto("BufWritePre", { pattern = { "*.md" }, command = "%s/\\s\\+$//e" })
+auto({ "BufEnter", "BufNewFile" }, {
+	pattern = { "*.g4" },
+	callback = function()
+		vim.bo.filetype = "antlr4"
+		vim.bo.commentstring = [[// %s]]
+	end,
+})

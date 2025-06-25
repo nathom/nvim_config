@@ -14,4 +14,5 @@ return {
 	config = function(plugin)
 		require("nvim-rooter").setup()
 	end,
+	enabled = false,
 }

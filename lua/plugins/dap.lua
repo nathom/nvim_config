@@ -17,7 +17,34 @@ return {
 			dapui.close()
 		end
 	end,
-	dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "theHamsta/nvim-dap-virtual-text" },
+	dependencies = {
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
+		"theHamsta/nvim-dap-virtual-text",
+		{
+			"jay-babu/mason-nvim-dap.nvim",
+			config = function()
+				require("mason-nvim-dap").setup({
+					handlers = {
+						function(config)
+							require("mason-nvim-dap").default_setup(config)
+						end,
+						python = function(config)
+							config.adapters = {
+								type = "executable",
+								command = "/Users/nathan/.pyenv/shims/python",
+								args = {
+									"-m",
+									"debugpy.adapter",
+								},
+							}
+							require("mason-nvim-dap").default_setup(config) -- don't forget this!
+						end,
+					},
+				})
+			end,
+		},
+	},
 	keys = {
 		{
 			"<leader>dc",
