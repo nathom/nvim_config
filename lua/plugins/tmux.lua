@@ -2,7 +2,7 @@
 -- GitHub version:
 -- "nathom/tmux.nvim"
 return {
-	dir = "~/tmux.nvim",
+	dir = "nathom/tmux.nvim",
 	-- "nathom/tmux.nvim",
 	config = function(plugin)
 		local map = require("utils").map

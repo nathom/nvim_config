@@ -1,1 +1,1 @@
-return { dir = "~/fast-python-indent" }
+return { "nathom/fast-python-indent" }

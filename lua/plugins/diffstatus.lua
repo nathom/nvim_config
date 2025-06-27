@@ -1,1 +1,1 @@
-return { dir = "~/diffstatus.nvim" }
+return { "nathom/diffstatus.nvim" }
