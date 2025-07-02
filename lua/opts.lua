@@ -54,6 +54,21 @@ opt("showmode", false)
 opt("number", true)
 opt("relativenumber", true)
 
+if vim.fn.executable("xclip") == 1 then
+	vim.g.clipboard = {
+		name = "xclip",
+		copy = {
+			["+"] = "xclip -selection clipboard",
+			["*"] = "xclip -selection clipboard",
+		},
+		paste = {
+			["+"] = "xclip -selection clipboard -o",
+			["*"] = "xclip -selection clipboard -o",
+		},
+		cache_enabled = false,
+	}
+end
+
 -- Tab settings
 opt("expandtab", true)
 opt("smarttab", true)
@@ -99,7 +114,7 @@ opt("hlsearch", true)
 opt("incsearch", true)
 
 -- The shell with the fastest startup time
-opt("shell", "/bin/bash")
+opt("shell", "/bin/sh")
 -- Faster searching with ripgrep
 opt("grepprg", "rg --vimgrep --no-heading --smart-case")
 

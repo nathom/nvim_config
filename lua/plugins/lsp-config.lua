@@ -7,6 +7,7 @@ local servers = {
 	python = { "pyright", "ruff" },
 	lua = { "lua_ls" },
 	systemverilog = { "svlangserver", "verible" },
+	haskell = { "hls" },
 	tex = { "texlab" },
 	java = { "jdtls" },
 	zig = { "zls" },
@@ -87,10 +88,16 @@ return {
 								},
 							},
 						}
+						cmd = {}
+					elseif s == "hls" then
+						settings = {}
+						cmd = { "haskell-language-server", "--lsp" }
 					else
 						settings = {}
+						cmd = {}
 					end
 					lspconfig[s].setup({
+						cmd = cmd,
 						capabilities = capabilities,
 						on_attach = on_attach,
 						settings = settings,
