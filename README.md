@@ -1,5 +1,7 @@
 # Nathan's Neovim Config Files
 
+**My config has been moved to [nathomvim](https://github.com/nathom/nathomvim).**
+
 Welcome! This is a repo where I exclusively keep and maintain my neovim
 config. There is a lot of code that is specific to my personal computer here,
 so this **won't work as a drop-in starter config**.
